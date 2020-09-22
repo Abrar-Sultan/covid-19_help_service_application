@@ -1,5 +1,5 @@
 """
-ASGI config for CovidHelpServiceApp project.
+ASGI config for covid_help_service_app project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CovidHelpServiceApp.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'covid_help_service_app.settings')
 
 application = get_asgi_application()

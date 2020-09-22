@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class PlasmaserviceConfig(AppConfig):
-    name = 'PlasmaService'
+    name = 'plasma_service'

@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="D:\NSU\12th semester\CSE 327\Project\Workings\covid-19_help_service_application\venv"
+$env:VIRTUAL_ENV="D:\covid19\covid-19_help_service_application\venv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

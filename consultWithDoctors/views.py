@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import ConsultWithDoctor
 
 
 def index(request):
-    return HttpResponse('<h1> This is the consultWithDoctor Page </h1>')
+    return render(request, 'index.html')
 

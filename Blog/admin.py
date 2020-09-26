@@ -3,7 +3,7 @@ from .models import BlogItem
 
 
 class BlogItemAdmin(admin.ModelAdmin):
-    list_display = ('phone', 'name', 'age')
+    list_display = ('phone', 'name', 'age', 'story')
 
 
 admin.site.register(BlogItem, BlogItemAdmin)

@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from . models import Blog
 
 # @desc Blog Page
 # @route http://127.0.0.1:8000/blog
 
 
 def blog(request):
-    return HttpResponse('<h1> This is the Blog App! <h1>')
+    blogs = Blog.objects.all()
+    return render(request, 'index.html', {'blogs': blogs})

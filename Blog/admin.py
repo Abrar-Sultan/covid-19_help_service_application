@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import BlogItem
 
-# Register your models here.
+
+class BlogItemAdmin(admin.ModelAdmin):
+    list_display = ('phone', 'name', 'age')
+
+
+admin.site.register(BlogItem, BlogItemAdmin)

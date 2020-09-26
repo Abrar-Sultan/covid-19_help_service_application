@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import BlogItem
+from .models import Blog
 
 
-class BlogItemAdmin(admin.ModelAdmin):
+class BlogAdmin(admin.ModelAdmin):
     list_display = ('phone', 'name', 'age', 'story')
 
 
-admin.site.register(BlogItem, BlogItemAdmin)
+admin.site.register(Blog, BlogAdmin)

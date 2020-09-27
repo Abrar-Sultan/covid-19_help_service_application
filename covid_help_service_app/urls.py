@@ -27,5 +27,7 @@ urlpatterns = [
                   path('Test_Online/', include('covid_test.urls')),
                   path('find_medicine/', include('find_medicine.urls')),
                   path('Reserve_Page/', include('reserve_icu_and_hospital_bed.urls')),
+                  path('blog/', include('Blog.urls')),
+                  path('consult/', include('consultWithDoctors.urls')),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

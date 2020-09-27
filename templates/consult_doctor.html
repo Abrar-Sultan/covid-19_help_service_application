@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Consult With Doctor</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="container text-center text-white bg-dark my-3">Consult With Doctor </h1>
+        <h3 class="container text-center text-white bg-dark my-3"> Pleae Fill up the consultation form </h3>
+        <form action="/consult/" method="post"> {%csrf_token%}
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" aria-describedby="name">
+            <small id="name" class="form-text text-muted"></small>
+          </div>
+            <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" class="form-control" id="age" aria-describedby="age">
+            <small id="age" class="form-text text-muted"></small>
+          </div>
+
+            <div class="form-group">
+            <label for="nid">NID</label>
+            <input type="text" class="form-control" id="nid" aria-describedby="nid">
+            <small id="nid" class="form-text text-muted"></small>
+          </div>
+
+            <div class="form-group">
+            <label for="blood_group">Blood Group</label>
+            <input type="blood_group" class="form-control" id="blood_group" aria-describedby="blood_group">
+            <small id="blood_group" class="form-text text-muted"></small>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

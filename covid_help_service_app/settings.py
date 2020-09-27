@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'covid_test.apps.CovidTestConfig',
     'find_medicine.apps.FindMedicineConfig',
     'reserve_icu_and_hospital_bed.apps.ReserveIcuAndHospitalBedConfig',
+    'Blog.apps.BlogConfig',
+    'consultWithDoctors.apps.ConsultwithdoctorsConfig',
 ]
 
 MIDDLEWARE = [

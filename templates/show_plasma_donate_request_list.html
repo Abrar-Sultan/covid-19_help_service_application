@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+
+{% block body  %}
+<div class="container">
+    <h2 class="text-center">Covid 19 Help Service </h2>
+    <h2 class="text-center">Plasma Request List </h2>
+</div>
+
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline" method="get" action="search_donate_request">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Blood Group" aria-label="Search"
+               name="query" id="query">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+
+    {% if user.is_authenticated %}
+    <p align="right">
+        <a class="btn btn-primary" href="delete_donate_request_form" role="button">{{ user.username }}'s Requests</a>
+    </p>
+    {% endif %}
+
+</nav>
+<table class="table table-striped">
+
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Sex</th>
+        <th>Blood Group</th>
+        <th>Location</th>
+        <th>Email and Contact Number</th>
+        <th>Covid Negative Test Report</th>
+    </tr>
+
+    {% for request in request_list %}
+    <tr>
+        <td>{{request.first_name}}</td>
+        <td>{{request.last_name}}</td>
+        <td> {{request.age}}</td>
+        <td> {{request.sex}}</td>
+        <td> {{request.blood_type}}</td>
+        <td> {{request.location}}</td>
+        <td> {{request.email}}<br>{{request.phone_number}}</td>
+        <td>
+            <a href="{{ request.image.url }}">
+                <img src="{{ request.image.url }}" width="50"/>
+            </a>
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% endblock body %}

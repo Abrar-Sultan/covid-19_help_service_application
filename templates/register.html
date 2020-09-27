@@ -1,0 +1,92 @@
+{% extends 'index.html' %}
+
+{% block body  %}
+<div class="container">
+    <form class="needs-validation" novalidate method="post" action="register" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">First name</label>
+                <input type="text" class="form-control" id="validationCustom01" name="f_name" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom02">Last name</label>
+                <input type="text" class="form-control" id="validationCustom02" name="l_name" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Email</label>
+                <input type="text" class="form-control" id="validationCustom03" name="email" required>
+                <div class="invalid-feedback">
+                    Please Provide Email Id
+                </div>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom04">User Name</label>
+                <input type="text" class="form-control" id="validationCustom04" name="username" required>
+                <div class="invalid-feedback">
+                    Please Provide Username
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom05">Password</label>
+                <input type="password" class="form-control" id="validationCustom05" name="password1" required>
+                <div class="invalid-feedback">
+                    Please Provide Password
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom06">Confirm Password</label>
+                <input type="password" class="form-control" id="validationCustom06" name="password2" required>
+                <div class="invalid-feedback">
+                    Please Re-enter Password
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+
+    <div class="text">
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+
+    </div>
+
+</div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+
+{% endblock body %}

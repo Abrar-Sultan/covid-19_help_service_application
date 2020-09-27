@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %} Available Oxygen Service {% endblock title %}
+
+{% block body  %}
+<div class="container">
+    <h2 class="text-center">Covid 19 Help Service </h2>
+    <h2 class="text-center">Available Oxygen Service </h2>
+</div>
+
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline" method="post" action="reserved_oxygen_cylinder">
+        {% csrf_token %}
+
+        <input class="form-control mr-sm-2" type="text" placeholder="Cylinder Number" aria-label="Reserve"
+               name="query" id="query">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Reserve</button>
+    </form>
+
+    {% if user.is_authenticated %}
+    <p align="right">
+        <a class="btn btn-primary" href="delete_oxygen_request_form" role="button">{{ user.username }}'s Requests</a>
+    </p>
+    {% endif %}
+    <form class="form-inline" method="get" action="search_oxygen_cylinder">
+        {% csrf_token %}
+
+        <input class="form-control mr-sm-2" type="text" placeholder="Cylinder Size" aria-label="Search"
+               name="query2" id="query2">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+<table class="table table-striped">
+
+    <tr>
+        <th>Company</th>
+        <th>Cylinder Size</th>
+        <th>Price</th>
+        <th>Cylinder Number</th>
+        <th>Email and Contact Number</th>
+    </tr>
+
+    {% for available_cylinder in available_oxygen_cylinder_list %}
+    <tr>
+        <td>{{available_cylinder.company_name}}</td>
+        <td>{{available_cylinder.cylinder_size}}</td>
+        <td>{{available_cylinder.price}}</td>
+        <td>{{available_cylinder.cylinder_number}}</td>
+        <td>{{available_cylinder.email}}<br>{{available_cylinder.phone_number}}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+
+{% endblock body %}

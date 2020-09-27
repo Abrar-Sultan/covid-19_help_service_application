@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+
+{% block body  %}
+<div class="container">
+    <h2 class="text-center">Covid 19 Help Service </h2>
+    <h2 class="text-center">Available Ambulance Service </h2>
+</div>
+
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline" method="post" action="reserved_ambulance">
+        {% csrf_token %}
+
+        <input class="form-control mr-sm-2" type="text" placeholder="Ambulance Number" aria-label="Reserve"
+               name="query" id="query">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Reserve</button>
+    </form>
+
+    {% if user.is_authenticated %}
+    <p align="right">
+        <a class="btn btn-primary" href="delete_request_form" role="button">{{ user.username }}'s Requests</a>
+    </p>
+    {% endif %}
+
+    <form class="form-inline" method="get" action="search_ambulance">
+        {% csrf_token %}
+
+        <input class="form-control mr-sm-2" type="text" placeholder="Ambulance Type" aria-label="Search"
+               name="query2" id="query2">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+</nav>
+<table class="table table-striped">
+
+    <tr>
+        <th>Hospital</th>
+        <th>Ambulance Type</th>
+        <th>Price</th>
+        <th>Ambulance Number</th>
+        <th>Email and Contact Number</th>
+    </tr>
+
+    {% for available_ambulance in available_ambulance_list %}
+    <tr>
+        <td>{{available_ambulance.hospital_name}}</td>
+        <td>{{available_ambulance.ambulance_type}}</td>
+        <td>{{available_ambulance.price}}</td>
+        <td>{{available_ambulance.ambulance_number}}</td>
+        <td>{{available_ambulance.email}}<br>{{available_ambulance.phone_number}}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+
+{% endblock body %}

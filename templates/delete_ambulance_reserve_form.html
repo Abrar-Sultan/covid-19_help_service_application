@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block body  %}
+<div class="container">
+    <h2 class="text-center">Covid 19 Help Service </h2>
+    <h2 class="text-center">Reserved Ambulance List </h2>
+</div>
+
+<nav class="navbar navbar-light bg-light">
+
+    <form class="form-inline" method="post" action="delete_request">
+        {% csrf_token %}
+
+        <input class="form-control mr-sm-2" type="number" placeholder="Enter ID" aria-label="Search"
+               name="query" id="query">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Delete</button>
+    </form>
+</nav>
+<div class="text">
+    {% for message in messages %}
+    <h3>{{message}}</h3>
+    {% endfor %}
+
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Hospital</th>
+        <th>Ambulance Type</th>
+        <th>Price</th>
+        <th>Ambulance Number</th>
+        <th>Patient Name</th>
+    </tr>
+
+    {% for entry in user_entry %}
+    <tr>
+        <td>{{entry.id}}</td>
+        <td>{{entry.hospital_name}}</td>
+        <td>{{entry.ambulance_type}}</td>
+        <td>{{entry.price}}</td>
+        <td>{{entry.ambulance_number}}</td>
+        <td>{{entry.patient_name}}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% endblock body %}

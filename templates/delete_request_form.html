@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+
+
+{% block body  %}
+<div class="container">
+    <h2 class="text-center">Covid 19 Help Service </h2>
+    <h2 class="text-center">Plasma Request List </h2>
+</div>
+
+<nav class="navbar navbar-light bg-light">
+
+    <form class="form-inline" method="post" action="delete_request">
+        {% csrf_token %}
+
+        <input class="form-control mr-sm-2" type="number" placeholder="Enter ID" aria-label="Search"
+               name="query" id="query">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Delete</button>
+    </form>
+</nav>
+    <div class="text">
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+
+    </div>
+<table class="table table-striped">
+
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Sex</th>
+        <th>Blood Group</th>
+        <th>Location</th>
+        <th>Email and Contact Number</th>
+        <th>Covid Negative Test Report</th>
+    </tr>
+
+    {% for entry in user_entry %}
+    <tr>
+        <td>{{entry.id}}</td>
+        <td>{{entry.first_name}}</td>
+        <td>{{entry.last_name}}</td>
+        <td> {{entry.age}}</td>
+        <td> {{entry.sex}}</td>
+        <td> {{entry.blood_type}}</td>
+        <td> {{entry.location}}</td>
+        <td> {{entry.email}}<br>{{entry.phone_number}}</td>
+        <td>
+            <a href="{{ entry.image.url }}">
+                <img src="{{ entry.image.url }}" width="50"/>
+            </a>
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% endblock body %}

@@ -5,10 +5,42 @@ from django.contrib import messages
 
 
 def index(request):
+    """
+    This method is used to display home page.
+
+
+    :param request: it's a HttpResponse from user.
+
+
+    :type request HttpResponse.
+
+
+    :return: this method returns a home page
+     which is a HTML page.
+
+
+    :rtype: HttpResponse.
+    """
     return render(request, 'index.html')
 
 
 def register(request):
+    """
+    This method is used to register nre users.
+
+
+    :param request: it's a HttpResponse from user.
+
+
+    :type request HttpResponse.
+
+
+    :return: this method returns a  login page after successfull
+    registration.
+
+
+    :rtype: HttpResponse.
+    """
     if request.method == "POST":
         f_name = request.POST['f_name']
         l_name = request.POST['l_name']
@@ -39,6 +71,22 @@ def register(request):
 
 
 def login(request):
+    """
+    This method is used to login a user.
+
+
+    :param request: it's a HttpResponse from user.
+
+
+    :type request HttpResponse.
+
+
+    :return: this method returns a home page
+     which is a HTML page.
+
+
+    :rtype: HttpResponse.
+    """
     if request.method == "POST":
         user_name = request.POST['username']
         password = request.POST['password']
@@ -57,5 +105,21 @@ def login(request):
 
 
 def logout(request):
+    """
+    This method is used to logout user.
+
+
+    :param request: it's a HttpResponse from user.
+
+
+    :type request HttpResponse.
+
+
+    :return: this method returns a home page
+     which is a HTML page.
+
+
+    :rtype: HttpResponse.
+    """
     auth.logout(request)
     return render(request, 'index.html')

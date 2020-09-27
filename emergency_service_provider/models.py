@@ -2,6 +2,13 @@ from django.db import models
 
 
 class AvailableAmbulance(models.Model):
+    """
+    This class is extended from the Model class so it has all the functionality
+    of the model class.
+
+
+    this class used to create objects for database entry
+    """
     hospital_name = models.CharField(max_length=30)
     ambulance_type = models.CharField(max_length=20)
     ambulance_number = models.CharField(max_length=30)
@@ -12,6 +19,13 @@ class AvailableAmbulance(models.Model):
 
 
 class ReserveAmbulance(models.Model):
+    """
+    This class is extended from the Model class so it has all the functionality
+    of the model class.
+
+
+    this class used to create objects for database entry
+    """
     username = models.CharField(max_length=30)
     hospital_name = models.CharField(max_length=30)
     ambulance_type = models.CharField(max_length=20)
@@ -29,6 +43,13 @@ class ReserveAmbulance(models.Model):
 
 
 class AvailableOxygenCylinder(models.Model):
+    """
+    This class is extended from the Model class so it has all the functionality
+    of the model class.
+
+
+    this class used to create objects for database entry
+    """
     company_name = models.CharField(max_length=30)
     cylinder_size = models.CharField(max_length=20)
     cylinder_number = models.CharField(max_length=30)
@@ -39,6 +60,13 @@ class AvailableOxygenCylinder(models.Model):
 
 
 class ReserveOxygenCylinder(models.Model):
+    """
+    This class is extended from the Model class so it has all the functionality
+    of the model class.
+
+
+    this class used to create objects for database entry
+    """
     username = models.CharField(max_length=30)
     company_name = models.CharField(max_length=30)
     cylinder_size = models.CharField(max_length=20)

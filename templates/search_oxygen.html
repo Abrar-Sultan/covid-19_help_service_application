@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+
+{% block body  %}
+<div class="container">
+    <h2 class="text-center">Covid 19 Help Service </h2>
+    <h2 class="text-center">Available Ambulance List </h2>
+</div>
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline" method="post" action="reserved_oxygen_cylinder">
+        {% csrf_token %}
+
+        <input class="form-control mr-sm-2" type="text" placeholder="Oxygen Cylinder Number" aria-label="Reserve"
+               name="query" id="query">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Reserve</button>
+    </form>
+
+</nav>
+{% if results == 'X' %}
+<p class="text">Invalid Query. Try again</p>
+
+{% elif results|length < 1 %}
+<p class="text"> Sorry, Your search for blood plasma <b>{{query}}</b> not found <br>
+    please put a request.Thank you
+</p>
+
+{% else %}
+<table class="table table-striped">
+    <tr>
+        <th>Company</th>
+        <th>Cylinder Size</th>
+        <th>Price</th>
+        <th>Cylinder Number</th>
+        <th>Email and Contact Number</th>
+    </tr>
+
+    {% for result in results %}
+    <tr>
+        <td>{{result.company_name}}</td>
+        <td>{{result.cylinder_size}}</td>
+        <td>{{result.price}}</td>
+        <td>{{result.cylinder_number}}</td>
+        <td>{{result.email}}<br>{{result.phone_number}}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% endif %}
+
+{% endblock body %}

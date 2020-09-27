@@ -1,0 +1,31 @@
+"""covid_help_service_app URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from . import views
+
+
+urlpatterns = [path('', views.reserve_page),
+               path('Available_ICU/See_Reserved_ICU/Deleted_From_ICU', views.deleted_icu),
+               path('Available_ICU/See_Reserved_ICU', views.see_reserve_icu),
+               path('Available_ICU/Confirm_Booking', views.confirm_booking_icu),
+               path('Available_ICU/Confirm_Booking/Thank_You', views.thank_you),
+               path('Available_ICU', views.available_icu),
+               path('Available_Hospital_Bed/Confirm_Booking_For_Hospital_Bed/Thank_You_For_Hospital_Bed', views.thank_you_for_hospital_bed),
+               path('Available_Hospital_Bed/See_Reserved_Hospital_Bed', views.see_reserved_hospital_bed),
+               path('Available_Hospital_Bed/Confirm_Booking_For_Hospital_Bed', views.confirm_booking_for_hospital_bed),
+               path('Available_Hospital_Bed/See_Reserved_Hospital_Bed/Deleted_From_Hospital_Bed', views.deleted_hospital_bed),
+               path('Available_Hospital_Bed', views.available_hospital_bed)]

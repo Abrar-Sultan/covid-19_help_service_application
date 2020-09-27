@@ -7,7 +7,7 @@ class PlasmaRequest(models.Model):
     of the model class.
 
 
-    this class used to create objects
+    this class used to create objects for database entry
     """
     username = models.CharField(max_length=254)
     first_name = models.CharField(max_length=255)
@@ -28,7 +28,7 @@ class PlasmaDonate(models.Model):
      of the model class.
 
 
-     this class used to create objects
+     this class used to create objects for database entry
      """
     username = models.CharField(max_length=254)
     first_name = models.CharField(max_length=255)

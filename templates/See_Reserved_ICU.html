@@ -1,0 +1,44 @@
+﻿{% extends 'index.html' %}
+
+
+{% block body  %}
+<body>
+
+    <div class="container">
+
+        <h2 class="text-center">See Reserved ICU </h2>
+    </div>
+    <table class="table table-striped">
+
+        <tr>
+            <th>ID</th>
+            <th>Hospital Name</th>
+            <th>ICU Type</th>
+            <th>Price</th>
+        </tr>
+        {% for ver in see_reserve_icu_ver %}
+        {%  if request.user.username == ver.user_name %}
+        <tr>
+            <td>{{ver.id}}</td>
+            <td>{{ver.hospital_name}}</td>
+            <td>{{ver.icu_type}}</td>
+            <td>{{ver.price}}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+
+
+    </table>
+
+        <form class="form-inline" method="post" action="/Reserve_Page/Available_ICU/See_Reserved_ICU/Deleted_From_ICU">
+            {% csrf_token %}
+            <input type="text" class="form-control" placeholder="Delete By ID" aria-label="Delete By ID" aria-describedby="basic-addon1" name="ID_Number" id="ID_Number">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Delete </button>
+        </form>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+{% endblock body %}

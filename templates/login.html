@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+
+
+{% block body  %}
+<div class="container">
+    <form class="needs-validation" novalidate method="post" action="login" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom01">User Name</label>
+                <input type="text" class="form-control" id="validationCustom01" name="username" required>
+                <div class="invalid-feedback">
+                    Please Enter Username
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom02">Password</label>
+                <input type="password" class="form-control" id="validationCustom02" name="password" required>
+                <div class="invalid-feedback">
+                    Please Enter Password
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Login</button>
+
+    </form>
+
+    <div class="text">
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+
+    </div>
+
+
+</div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+{% endblock body %}

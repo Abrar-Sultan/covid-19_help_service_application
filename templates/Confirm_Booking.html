@@ -1,0 +1,69 @@
+﻿{% extends 'index.html' %}
+
+
+{% block body  %}
+<body>
+    <div class="container">
+        <h2 class="text-center">Booking Informations </h2>
+
+        <form class="needs-validation" action="/Reserve_Page/Available_ICU/Confirm_Booking/Thank_You" method="post" novalidate>
+            {% csrf_token %}
+            <input type="hidden" class="form-control" id="Hospital_Name" name="Hospital_Name" value="{{ info.hospital_name }}">
+            <input type="hidden" class="form-control" id="ICU_Type" name="ICU_Type" value="{{ info.icu_type }}">
+            <input type="hidden" class="form-control" id="Price" name="Price" value="{{ info.price }}">
+            <input type="hidden" class="form-control" id="Address" name="Address" value="{{ info.address }}">
+            <input type="hidden" class="form-control" id="Is_Available" name="Is_Available" value="0">
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="Patient_Name">Patient Name</label>
+                    <input type="text" class="form-control" id="Patient_Name" name="Patient_Name" required>
+                    <div class="invalid-feedback">
+                        Please provide Patient Name.
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="Patient_Blood_Group">Patient Blood Group</label>
+                    <input type="text" class="form-control" id="Patient_Blood_Group" name="Patient_Blood_Group" required>
+                    <div class="invalid-feedback">
+                        Please provide Patient Blood Group
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="Patient_Age">Patient Age</label>
+                    <input type="text" class="form-control" id="Patient_Age" name="Patient_Age" required>
+                    <div class="invalid-feedback">
+                        Please provide Patient_Age
+                    </div>
+                </div>
+            </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="Contact_Number">Contact Number</label>
+                    <input type="text" class="form-control" id="Contact_Number" name="Contact_Number" required>
+                    <div class="invalid-feedback">
+                        Please provide Contact Number.
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="Bkash_Number">Bkash Number</label>
+                    <input type="text" class="form-control" id="Bkash_Number" name="Bkash_Number" required>
+                    <div class="invalid-feedback">
+                        Please provide Bkash_Number.
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="Bkash_Transaction_ID">Bkash Transaction ID</label>
+                    <input type="text" class="form-control" id="Bkash_Transaction_ID" name="Bkash_Transaction_ID" required>
+                    <div class="invalid-feedback">
+                        Please provide Bkash Transaction Number
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+
+        <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+{% endblock body %}

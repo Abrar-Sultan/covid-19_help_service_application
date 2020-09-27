@@ -1,0 +1,846 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>emergency_service_provider package &#8212; covid_19_help_service_application 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="emergency-service-provider-package">
+<h1>emergency_service_provider package<a class="headerlink" href="#emergency-service-provider-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="emergency_service_provider.migrations.html">emergency_service_provider.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="emergency_service_provider.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emergency_service_provider.migrations.html#module-emergency_service_provider.migrations.0001_initial">emergency_service_provider.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emergency_service_provider.migrations.html#module-emergency_service_provider.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-emergency_service_provider.admin">
+<span id="emergency-service-provider-admin-module"></span><h2>emergency_service_provider.admin module<a class="headerlink" href="#module-emergency_service_provider.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-emergency_service_provider.apps">
+<span id="emergency-service-provider-apps-module"></span><h2>emergency_service_provider.apps module<a class="headerlink" href="#module-emergency_service_provider.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="emergency_service_provider.apps.EmergencyServiceProviderConfig">
+<em class="property">class </em><code class="sig-prename descclassname">emergency_service_provider.apps.</code><code class="sig-name descname">EmergencyServiceProviderConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/apps.html#EmergencyServiceProviderConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.apps.EmergencyServiceProviderConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt id="emergency_service_provider.apps.EmergencyServiceProviderConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'emergency_service_provider'</em><a class="headerlink" href="#emergency_service_provider.apps.EmergencyServiceProviderConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-emergency_service_provider.models">
+<span id="emergency-service-provider-models-module"></span><h2>emergency_service_provider.models module<a class="headerlink" href="#module-emergency_service_provider.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="emergency_service_provider.models.AvailableAmbulance">
+<em class="property">class </em><code class="sig-prename descclassname">emergency_service_provider.models.</code><code class="sig-name descname">AvailableAmbulance</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/models.html#AvailableAmbulance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This class is extended from the Model class so it has all the functionality
+of the model class.</p>
+<p>this class used to create objects for database entry</p>
+<dl class="py exception">
+<dt id="emergency_service_provider.models.AvailableAmbulance.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="emergency_service_provider.models.AvailableAmbulance.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableAmbulance.ambulance_number">
+<code class="sig-name descname">ambulance_number</code><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance.ambulance_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableAmbulance.ambulance_type">
+<code class="sig-name descname">ambulance_type</code><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance.ambulance_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableAmbulance.email">
+<code class="sig-name descname">email</code><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance.email" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableAmbulance.hospital_name">
+<code class="sig-name descname">hospital_name</code><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance.hospital_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableAmbulance.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableAmbulance.is_available">
+<code class="sig-name descname">is_available</code><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance.is_available" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableAmbulance.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableAmbulance.phone_number">
+<code class="sig-name descname">phone_number</code><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance.phone_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableAmbulance.price">
+<code class="sig-name descname">price</code><a class="headerlink" href="#emergency_service_provider.models.AvailableAmbulance.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder">
+<em class="property">class </em><code class="sig-prename descclassname">emergency_service_provider.models.</code><code class="sig-name descname">AvailableOxygenCylinder</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/models.html#AvailableOxygenCylinder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This class is extended from the Model class so it has all the functionality
+of the model class.</p>
+<p>this class used to create objects for database entry</p>
+<dl class="py exception">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder.company_name">
+<code class="sig-name descname">company_name</code><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder.company_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder.cylinder_number">
+<code class="sig-name descname">cylinder_number</code><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder.cylinder_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder.cylinder_size">
+<code class="sig-name descname">cylinder_size</code><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder.cylinder_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder.email">
+<code class="sig-name descname">email</code><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder.email" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder.is_available">
+<code class="sig-name descname">is_available</code><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder.is_available" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder.phone_number">
+<code class="sig-name descname">phone_number</code><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder.phone_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.AvailableOxygenCylinder.price">
+<code class="sig-name descname">price</code><a class="headerlink" href="#emergency_service_provider.models.AvailableOxygenCylinder.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="emergency_service_provider.models.ReserveAmbulance">
+<em class="property">class </em><code class="sig-prename descclassname">emergency_service_provider.models.</code><code class="sig-name descname">ReserveAmbulance</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/models.html#ReserveAmbulance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This class is extended from the Model class so it has all the functionality
+of the model class.</p>
+<p>this class used to create objects for database entry</p>
+<dl class="py exception">
+<dt id="emergency_service_provider.models.ReserveAmbulance.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="emergency_service_provider.models.ReserveAmbulance.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.age">
+<code class="sig-name descname">age</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.age" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.ambulance_number">
+<code class="sig-name descname">ambulance_number</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.ambulance_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.ambulance_type">
+<code class="sig-name descname">ambulance_type</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.ambulance_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.bkash_number">
+<code class="sig-name descname">bkash_number</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.bkash_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.bkash_transaction_id">
+<code class="sig-name descname">bkash_transaction_id</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.bkash_transaction_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.blood_type">
+<code class="sig-name descname">blood_type</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.blood_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.hospital_name">
+<code class="sig-name descname">hospital_name</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.hospital_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.location">
+<code class="sig-name descname">location</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.location" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.nid">
+<code class="sig-name descname">nid</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.nid" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.patient_name">
+<code class="sig-name descname">patient_name</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.patient_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.phone_number">
+<code class="sig-name descname">phone_number</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.phone_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.price">
+<code class="sig-name descname">price</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.sex">
+<code class="sig-name descname">sex</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.sex" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveAmbulance.username">
+<code class="sig-name descname">username</code><a class="headerlink" href="#emergency_service_provider.models.ReserveAmbulance.username" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder">
+<em class="property">class </em><code class="sig-prename descclassname">emergency_service_provider.models.</code><code class="sig-name descname">ReserveOxygenCylinder</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/models.html#ReserveOxygenCylinder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This class is extended from the Model class so it has all the functionality
+of the model class.</p>
+<p>this class used to create objects for database entry</p>
+<dl class="py exception">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.age">
+<code class="sig-name descname">age</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.age" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.bkash_number">
+<code class="sig-name descname">bkash_number</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.bkash_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.bkash_transaction_id">
+<code class="sig-name descname">bkash_transaction_id</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.bkash_transaction_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.blood_type">
+<code class="sig-name descname">blood_type</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.blood_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.company_name">
+<code class="sig-name descname">company_name</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.company_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.cylinder_number">
+<code class="sig-name descname">cylinder_number</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.cylinder_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.cylinder_size">
+<code class="sig-name descname">cylinder_size</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.cylinder_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.location">
+<code class="sig-name descname">location</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.location" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.nid">
+<code class="sig-name descname">nid</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.nid" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.patient_name">
+<code class="sig-name descname">patient_name</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.patient_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.phone_number">
+<code class="sig-name descname">phone_number</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.phone_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.price">
+<code class="sig-name descname">price</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.sex">
+<code class="sig-name descname">sex</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.sex" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.models.ReserveOxygenCylinder.username">
+<code class="sig-name descname">username</code><a class="headerlink" href="#emergency_service_provider.models.ReserveOxygenCylinder.username" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-emergency_service_provider.tests">
+<span id="emergency-service-provider-tests-module"></span><h2>emergency_service_provider.tests module<a class="headerlink" href="#module-emergency_service_provider.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-emergency_service_provider.urls">
+<span id="emergency-service-provider-urls-module"></span><h2>emergency_service_provider.urls module<a class="headerlink" href="#module-emergency_service_provider.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-emergency_service_provider.views">
+<span id="emergency-service-provider-views-module"></span><h2>emergency_service_provider.views module<a class="headerlink" href="#module-emergency_service_provider.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="emergency_service_provider.views.available_ambulance">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">available_ambulance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#available_ambulance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.available_ambulance" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to display the available ambulance list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page that display all the entry</p>
+</dd>
+</dl>
+<p>of the ambulance those are available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.available_oxygen_cylinder">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">available_oxygen_cylinder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#available_oxygen_cylinder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.available_oxygen_cylinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to display the available oxygen cylinder list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page that display all the entry</p>
+</dd>
+</dl>
+<p>of the oxygen cylinder those are available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.confirm_oxygen_reservation">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">confirm_oxygen_reservation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#confirm_oxygen_reservation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.confirm_oxygen_reservation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to handle the oxygen cylinder reservation, it takes data from the
+patient information form and oxygen cylinder information and stores it in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns a thank you page when data</p>
+</dd>
+</dl>
+<p>is successfully stored in data base, else it will return the oxygen reservation form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.confirm_reservation">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">confirm_reservation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#confirm_reservation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.confirm_reservation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to handle the ambulance reservation, it takes data from the
+patient information form and ambulance data and stores it in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns a thank you page when data</p>
+</dd>
+</dl>
+<p>is successfully stored in data base, else it will return the ambulance reservation
+form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.delete_oxygen_request">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">delete_oxygen_request</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#delete_oxygen_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.delete_oxygen_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to handle the delete functionality for oxygen cylinder reservation
+for a specific user. It finds that particular entry of that user and delete
+that entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns the home page for emergency service provider.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.delete_oxygen_request_form">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">delete_oxygen_request_form</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#delete_oxygen_request_form"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.delete_oxygen_request_form" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to display the reserved oxygen cylinder list for a specific
+user and it displays a form for that user where user can input a id from the list
+to delete that particular request for oxygen cylinder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns login page when user
+is not logged in, else it returns the page that display form to delete and
+that users requests.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.delete_request">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">delete_request</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#delete_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.delete_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to handle the delete functionality for ambulance reservation
+for a specific user. It finds that particular entry of that user and delete
+that entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns the home page for emergency service provider.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.delete_request_form">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">delete_request_form</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#delete_request_form"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.delete_request_form" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to display the available ambulance list for a specific
+user and it displays a form for that user where user can input a id from the list
+to delete that particular request for ambulance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns login page when user
+is not logged in, else it returns the page that display form to delete and
+that users requests.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.emergency_service_provider_home">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">emergency_service_provider_home</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#emergency_service_provider_home"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.emergency_service_provider_home" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to display home page for this emergency service provider function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a home page for emergency service providers
+which is a HTML page.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.reserved_ambulance">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">reserved_ambulance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#reserved_ambulance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.reserved_ambulance" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used reserve ambulance when user is logged in, else it will
+display the login page for user to log in. It shows a form where user
+have to enter the ambulance number to reserve that particular ambulance and
+also have fill up a form for patient details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns login page when user</p>
+</dd>
+</dl>
+<p>is not logged in, else it returns the patient information form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.reserved_oxygen_cylinder">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">reserved_oxygen_cylinder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#reserved_oxygen_cylinder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.reserved_oxygen_cylinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used reserve oxygen cylinder when user is logged in, else it will
+display the login page for user to log in. It shows a form where user
+have to enter the oxygen cylinder number to reserve that particular oxygen cylinder and
+also have fill up a form for patient details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns login page when user</p>
+</dd>
+</dl>
+<p>is not logged in, else it returns the patient information form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.search_ambulance">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">search_ambulance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#search_ambulance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.search_ambulance" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to search ambulance by ambulance type, it search all
+the records in the data base for a specific ambulance type and display the
+results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page that display all the available entry</p>
+</dd>
+</dl>
+<p>of that ambulance type in the data base that matches the users entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emergency_service_provider.views.search_oxygen_cylinder">
+<code class="sig-prename descclassname">emergency_service_provider.views.</code><code class="sig-name descname">search_oxygen_cylinder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/views.html#search_oxygen_cylinder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.views.search_oxygen_cylinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to search oxygen cylinder by cylinder size, it search all
+the records in the data base for a specific cylinder size and display the
+results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page that display all the available entry</p>
+</dd>
+</dl>
+<p>of that cylinder size in the data base that matches the users entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-emergency_service_provider">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-emergency_service_provider" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">covid_19_help_service_application</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, ASH,KA,SA,AL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/emergency_service_provider.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

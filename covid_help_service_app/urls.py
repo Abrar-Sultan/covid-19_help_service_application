@@ -18,12 +18,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
-    path('', include('home.urls')),
-    path('admin/', admin.site.urls),
-    path('home/', include('home.urls')),
-    path('plasma_service/', include('plasma_service.urls')),
-    path('emergency_service_provider/', include('emergency_service_provider.urls')),
+                  path('', include('home.urls')),
+                  path('admin/', admin.site.urls),
+                  path('home/', include('home.urls')),
+                  path('plasma_service/', include('plasma_service.urls')),
+                  path('emergency_service_provider/', include('emergency_service_provider.urls')),
+                  path('Test_Online/', include('covid_test.urls')),
+                  path('find_medicine/', include('find_medicine.urls')),
+                  path('Reserve_Page/', include('reserve_icu_and_hospital_bed.urls')),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

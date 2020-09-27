@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+
+{% block body  %}
+<div class="container">
+    <h2 class="text-center">Covid 19 Help Service </h2>
+    <h2 class="text-center">Search medicine </h2>
+</div>
+
+{% if results == 'X' %}
+<p class="text">Invalid Query. Try again</p>
+
+{% elif results|length < 1 %}
+<p class="text"> Sorry, Your search for medicine <b>{{query}}</b> not found
+</p>
+
+{% else %}
+<table class="table table-striped">
+<tr>
+       <tr>
+        <th>name</th>
+        <th>price</th>
+        <th>generic</th>
+        <th>indication</th>
+    </tr>
+
+
+    {% for result in results %}
+    <tr>
+         <td>{{result.name}}</td>
+        <td>{{result.price}}</td>
+        <td> {{result.generic}}</td>
+        <td> {{result.indication}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+{% endblock body %}

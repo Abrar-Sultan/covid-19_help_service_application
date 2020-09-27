@@ -18,7 +18,7 @@ def emergency_service_provider_home(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a home page for emergency service providers
@@ -38,7 +38,7 @@ def available_ambulance(request):
      :param request: it's a HttpResponse from user.
 
 
-     :type request HttpResponse.
+     :type request: HttpResponse.
 
 
      :return: this method returns a html page that display all the entry
@@ -62,7 +62,7 @@ def reserved_ambulance(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a html page. It returns login page when user
@@ -96,7 +96,7 @@ def confirm_reservation(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a html page. It returns a thank you page when data
@@ -155,7 +155,7 @@ def search_ambulance(request):
       :param request: it's a HttpResponse from user.
 
 
-      :type request HttpResponse.
+      :type request: HttpResponse.
 
 
       :return: this method returns a html page that display all the available entry
@@ -184,7 +184,7 @@ def delete_request_form(request):
       :param request: it's a HttpResponse from user.
 
 
-      :type request HttpResponse.
+      :type request: HttpResponse.
 
 
       :return: this method returns a html page. It returns login page when user
@@ -212,7 +212,7 @@ def delete_request(request):
         :param request: it's a HttpResponse from user.
 
 
-        :type request HttpResponse.
+        :type request: HttpResponse.
 
 
         :return: this method returns the home page for emergency service provider.
@@ -242,7 +242,7 @@ def available_oxygen_cylinder(request):
      :param request: it's a HttpResponse from user.
 
 
-     :type request HttpResponse.
+     :type request: HttpResponse.
 
 
      :return: this method returns a html page that display all the entry
@@ -267,7 +267,7 @@ def reserved_oxygen_cylinder(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a html page. It returns login page when user
@@ -302,7 +302,7 @@ def confirm_oxygen_reservation(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a html page. It returns a thank you page when data
@@ -359,7 +359,7 @@ def search_oxygen_cylinder(request):
       :param request: it's a HttpResponse from user.
 
 
-      :type request HttpResponse.
+      :type request: HttpResponse.
 
 
       :return: this method returns a html page that display all the available entry
@@ -388,7 +388,7 @@ def delete_oxygen_request_form(request):
       :param request: it's a HttpResponse from user.
 
 
-      :type request HttpResponse.
+      :type request: HttpResponse.
 
 
       :return: this method returns a html page. It returns login page when user
@@ -416,7 +416,7 @@ def delete_oxygen_request(request):
         :param request: it's a HttpResponse from user.
 
 
-        :type request HttpResponse.
+        :type request: HttpResponse.
 
 
         :return: this method returns the home page for emergency service provider.
@@ -438,3 +438,4 @@ def delete_oxygen_request(request):
     else:
         messages.info(request, 'Entry Does Not Exists')
         return render(request, 'delete_oxygen_reserve_form.html')
+

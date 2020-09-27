@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reserve_icu_and_hospital_bed.views &#8212; covid_19_help_service_application 1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for reserve_icu_and_hospital_bed.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">get_object_or_404</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">AvailableICU</span><span class="p">,</span> <span class="n">BookingICU</span><span class="p">,</span> <span class="n">AvailableHospitalBed</span><span class="p">,</span> <span class="n">BookingHospitalBed</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+<span class="n">global_veriable</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">global_veriable2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+
+<div class="viewcode-block" id="reserve_page"><a class="viewcode-back" href="../../reserve_icu_and_hospital_bed.html#reserve_icu_and_hospital_bed.views.reserve_page">[docs]</a><span class="k">def</span> <span class="nf">reserve_page</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to show the selection page of see available ICU and see available hospital bed.</span>
+<span class="sd">    by clicking one of the option it shows the corresponding page.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page.It returns a page where it has two options.one is see available</span>
+<span class="sd">    ICU and see available hospital base pages.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Reserve_Page.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="available_icu"><a class="viewcode-back" href="../../reserve_icu_and_hospital_bed.html#reserve_icu_and_hospital_bed.views.available_icu">[docs]</a><span class="k">def</span> <span class="nf">available_icu</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to display the available ICU list.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page that display all the available entry</span>
+<span class="sd">    of the ICU.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">available_icu_ver</span> <span class="o">=</span> <span class="n">AvailableICU</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Available_ICU.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;available_icu_ver&#39;</span><span class="p">:</span> <span class="n">available_icu_ver</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="see_reserve_icu"><a class="viewcode-back" href="../../reserve_icu_and_hospital_bed.html#reserve_icu_and_hospital_bed.views.see_reserve_icu">[docs]</a><span class="k">def</span> <span class="nf">see_reserve_icu</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to display the reserved ICU list of that specific user.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page that display all the reserved ICU list if the user is</span>
+<span class="sd">    logged in. else it will return the log in page.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">see_reserve_icu_ver</span> <span class="o">=</span> <span class="n">BookingICU</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;See_Reserved_ICU.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;see_reserve_icu_ver&#39;</span><span class="p">:</span> <span class="n">see_reserve_icu_ver</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="see_reserved_hospital_bed"><a class="viewcode-back" href="../../reserve_icu_and_hospital_bed.html#reserve_icu_and_hospital_bed.views.see_reserved_hospital_bed">[docs]</a><span class="k">def</span> <span class="nf">see_reserved_hospital_bed</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to display the reserved Hospital bed list of that specific user.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page that display all the reserved ICU list if the user is logged in.</span>
+<span class="sd">    else it will return the log in page.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">see_reserved_hospital_bed_ver</span> <span class="o">=</span> <span class="n">BookingHospitalBed</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;See_Reserved_Hospital_Bed.html&#39;</span><span class="p">,</span>
+                      <span class="p">{</span><span class="s1">&#39;see_reserved_hospital_bed_ver&#39;</span><span class="p">:</span> <span class="n">see_reserved_hospital_bed_ver</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="deleted_icu"><a class="viewcode-back" href="../../reserve_icu_and_hospital_bed.html#reserve_icu_and_hospital_bed.views.deleted_icu">[docs]</a><span class="k">def</span> <span class="nf">deleted_icu</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to delete the specific reserved ICU entry by ID and it changes the availability</span>
+<span class="sd">    of that specific ICU entry in the available ICU database.finally it shows the confirmation of delete page.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns the page of confirmation of delete if the user is logged in.</span>
+<span class="sd">    else it will return the log in page.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">delete_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;ID_Number&#39;</span><span class="p">]</span>
+        <span class="n">new_delete_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">delete_id</span><span class="p">)</span>
+        <span class="n">deleted_icu_ver</span> <span class="o">=</span> <span class="n">BookingICU</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">new_delete_id</span><span class="p">)</span>
+        <span class="n">previous_id</span> <span class="o">=</span> <span class="n">deleted_icu_ver</span><span class="o">.</span><span class="n">previous_id</span>
+        <span class="n">deleted_icu_ver</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="n">change_in_database</span> <span class="o">=</span> <span class="n">AvailableICU</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">previous_id</span><span class="p">)</span>
+        <span class="n">change_in_database</span><span class="o">.</span><span class="n">is_available</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+        <span class="n">change_in_database</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Deleted_From_ICU.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="deleted_hospital_bed"><a class="viewcode-back" href="../../reserve_icu_and_hospital_bed.html#reserve_icu_and_hospital_bed.views.deleted_hospital_bed">[docs]</a><span class="k">def</span> <span class="nf">deleted_hospital_bed</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to delete the specific reserved hospital bed entry by ID and it changes the availability</span>
+<span class="sd">    of that specific hospital bed entry in the available hospital bed database.finally it shows the confirmation of delete page.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns the page of confirmation of delete if the user is logged in.</span>
+<span class="sd">    else it will return the log in page.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">delete_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;ID_Number&#39;</span><span class="p">]</span>
+        <span class="n">new_delete_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">delete_id</span><span class="p">)</span>
+        <span class="n">deleted_hospital_bed_ver</span> <span class="o">=</span> <span class="n">BookingHospitalBed</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">new_delete_id</span><span class="p">)</span>
+        <span class="n">previous_id</span> <span class="o">=</span> <span class="n">deleted_hospital_bed_ver</span><span class="o">.</span><span class="n">previous_id</span>
+        <span class="n">deleted_hospital_bed_ver</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="n">change_in_database</span> <span class="o">=</span> <span class="n">AvailableHospitalBed</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">previous_id</span><span class="p">)</span>
+        <span class="n">change_in_database</span><span class="o">.</span><span class="n">is_available</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+        <span class="n">change_in_database</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Deleted_From_Hospital_Bed.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="available_hospital_bed"><a class="viewcode-back" href="../../reserve_icu_and_hospital_bed.html#reserve_icu_and_hospital_bed.views.available_hospital_bed">[docs]</a><span class="k">def</span> <span class="nf">available_hospital_bed</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to display the available hospital bed list.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page that display all the available entry</span>
+<span class="sd">    of hospital bed.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">available_hospital_bed_ver</span> <span class="o">=</span> <span class="n">AvailableHospitalBed</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Available_Hospital_Bed.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;available_hospital_bed_ver&#39;</span><span class="p">:</span> <span class="n">available_hospital_bed_ver</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="confirm_booking_for_hospital_bed"><a class="viewcode-back" href="../../reserve_icu_and_hospital_bed.html#reserve_icu_and_hospital_bed.views.confirm_booking_for_hospital_bed">[docs]</a><span class="k">def</span> <span class="nf">confirm_booking_for_hospital_bed</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to handle the hospital bed reservation, it takes data from the</span>
+<span class="sd">    patient information form and confirm payment.finally it stores the hospital bed</span>
+<span class="sd">    information and payment confirmations in the database.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns a form page of the patient details and payment confirmation page</span>
+<span class="sd">    of hospital bed. if the input is wrong it will show a wrong id massage.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">global_veriable2</span>
+    <span class="n">available_hospital_bed_ver</span> <span class="o">=</span> <span class="n">AvailableHospitalBed</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;ID_Number&#39;</span><span class="p">]</span>
+    <span class="n">check_availability</span> <span class="o">=</span> <span class="n">AvailableHospitalBed</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">)</span>
+    <span class="n">new_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">check_availability</span><span class="o">.</span><span class="n">is_available</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">available_hospital_bed_ver</span><span class="p">[</span><span class="n">new_id</span><span class="p">]</span>
+        <span class="n">global_veriable2</span> <span class="o">=</span> <span class="n">new_id</span>
+        <span class="n">global_veriable2</span> <span class="o">=</span> <span class="n">global_veriable2</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Confirm_Booking_For_Hospital_Bed.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="n">info</span><span class="p">})</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;Wrong ID&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="confirm_booking_icu"><a class="viewcode-back" href="../../reserve_icu_and_hospital_bed.html#reserve_icu_and_hospital_bed.views.confirm_booking_icu">[docs]</a><span class="k">def</span> <span class="nf">confirm_booking_icu</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to handle the ICU reservation, it takes data from the patient information</span>
+<span class="sd">    form and confirm payment.finally it stores the ICU information and payment confirmations in the database.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns a form page of the patient details and payment confirmation page</span>
+<span class="sd">    of ICU. if the input is wrong it will show a wrong id massage.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">global</span> <span class="n">global_veriable</span>
+    <span class="n">available_icu_ver</span> <span class="o">=</span> <span class="n">AvailableICU</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;ID_Number&#39;</span><span class="p">]</span>
+    <span class="n">check_availability</span> <span class="o">=</span> <span class="n">AvailableICU</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">)</span>
+    <span class="n">new_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">check_availability</span><span class="o">.</span><span class="n">is_available</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">available_icu_ver</span><span class="p">[</span><span class="n">new_id</span><span class="p">]</span>
+        <span class="n">global_veriable</span> <span class="o">=</span> <span class="n">new_id</span>
+        <span class="n">global_veriable</span> <span class="o">=</span> <span class="n">global_veriable</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Confirm_Booking.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="n">info</span><span class="p">})</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;Wrong ID&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="thank_you"><a class="viewcode-back" href="../../reserve_icu_and_hospital_bed.html#reserve_icu_and_hospital_bed.views.thank_you">[docs]</a><span class="k">def</span> <span class="nf">thank_you</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to handle the request of confirm reservation of ICU page, it takes data from the form and modify</span>
+<span class="sd">    the availability of that specific entry of the available ICU database and stores it in the booking ICU database.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns a thank you page when data</span>
+<span class="sd">    is successfully stored in data base.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">change_in_database</span> <span class="o">=</span> <span class="n">AvailableICU</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">global_veriable</span><span class="p">)</span>
+    <span class="n">change_in_database</span><span class="o">.</span><span class="n">is_available</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
+    <span class="n">change_in_database</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">patient_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Patient_Name&#39;</span><span class="p">]</span>
+        <span class="n">patient_blood_group</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Patient_Blood_Group&#39;</span><span class="p">]</span>
+        <span class="n">patient_age</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Patient_Age&#39;</span><span class="p">]</span>
+        <span class="n">contact_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Contact_Number&#39;</span><span class="p">]</span>
+        <span class="n">bkash_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Bkash_Number&#39;</span><span class="p">]</span>
+        <span class="n">bkash_transaction_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Bkash_Transaction_ID&#39;</span><span class="p">]</span>
+        <span class="n">hospital_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Hospital_Name&#39;</span><span class="p">]</span>
+        <span class="n">icu_type</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;ICU_Type&#39;</span><span class="p">]</span>
+        <span class="n">price</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Price&#39;</span><span class="p">]</span>
+        <span class="n">is_available</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Is_Available&#39;</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">hospital_name</span><span class="p">,</span> <span class="n">icu_type</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">is_available</span><span class="p">)</span>
+        <span class="n">ins</span> <span class="o">=</span> <span class="n">BookingICU</span><span class="p">(</span><span class="n">user_name</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="n">contact_number</span><span class="o">=</span><span class="n">contact_number</span><span class="p">,</span>
+                         <span class="n">patient_age</span><span class="o">=</span><span class="n">patient_age</span><span class="p">,</span> <span class="n">patient_name</span><span class="o">=</span><span class="n">patient_name</span><span class="p">,</span> <span class="n">patient_blood_group</span><span class="o">=</span><span class="n">patient_blood_group</span><span class="p">,</span>
+                         <span class="n">bkash_number</span><span class="o">=</span><span class="n">bkash_number</span><span class="p">,</span> <span class="n">bkash_transaction_id</span><span class="o">=</span><span class="n">bkash_transaction_id</span><span class="p">,</span>
+                         <span class="n">hospital_name</span><span class="o">=</span><span class="n">hospital_name</span><span class="p">,</span> <span class="n">icu_type</span><span class="o">=</span><span class="n">icu_type</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="n">price</span><span class="p">,</span> <span class="n">is_available</span><span class="o">=</span><span class="n">is_available</span><span class="p">,</span>
+                         <span class="n">previous_id</span><span class="o">=</span><span class="n">global_veriable</span><span class="p">)</span>
+        <span class="n">ins</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Thank_You.html&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="thank_you_for_hospital_bed"><a class="viewcode-back" href="../../reserve_icu_and_hospital_bed.html#reserve_icu_and_hospital_bed.views.thank_you_for_hospital_bed">[docs]</a><span class="k">def</span> <span class="nf">thank_you_for_hospital_bed</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to handle the request of confirm reservation of hospital bed page, it takes data from the form and modify</span>
+<span class="sd">    the availability of that specific entry of the available hospital bed database and stores it in the booking hospital bed database.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns a thank you page when data</span>
+<span class="sd">    is successfully stored in data base.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">change_in_database</span> <span class="o">=</span> <span class="n">AvailableHospitalBed</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">global_veriable2</span><span class="p">)</span>
+    <span class="n">change_in_database</span><span class="o">.</span><span class="n">is_available</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
+    <span class="n">change_in_database</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">patient_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Patient_Name&#39;</span><span class="p">]</span>
+        <span class="n">patient_blood_group</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Patient_Blood_Group&#39;</span><span class="p">]</span>
+        <span class="n">patient_age</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Patient_Age&#39;</span><span class="p">]</span>
+        <span class="n">contact_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Contact_Number&#39;</span><span class="p">]</span>
+        <span class="n">available_ac</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Available_AC&#39;</span><span class="p">]</span>
+        <span class="n">bkash_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Bkash_Number&#39;</span><span class="p">]</span>
+        <span class="n">bkash_transaction_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Bkash_Transaction_ID&#39;</span><span class="p">]</span>
+        <span class="n">hospital_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Hospital_Name&#39;</span><span class="p">]</span>
+        <span class="n">bed_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Bed_Number&#39;</span><span class="p">]</span>
+        <span class="n">price_per_day</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Price_Per_Day&#39;</span><span class="p">]</span>
+        <span class="n">is_available</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;Is_Available&#39;</span><span class="p">]</span>
+        <span class="n">ins</span> <span class="o">=</span> <span class="n">BookingHospitalBed</span><span class="p">(</span><span class="n">user_name</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+                                 <span class="n">contact_number</span><span class="o">=</span><span class="n">contact_number</span><span class="p">,</span> <span class="n">available_ac</span><span class="o">=</span><span class="n">available_ac</span><span class="p">,</span> <span class="n">patient_age</span><span class="o">=</span><span class="n">patient_age</span><span class="p">,</span>
+                                 <span class="n">patient_name</span><span class="o">=</span><span class="n">patient_name</span><span class="p">,</span> <span class="n">patient_blood_group</span><span class="o">=</span><span class="n">patient_blood_group</span><span class="p">,</span>
+                                 <span class="n">bkash_number</span><span class="o">=</span><span class="n">bkash_number</span><span class="p">,</span> <span class="n">bkash_transaction_id</span><span class="o">=</span><span class="n">bkash_transaction_id</span><span class="p">,</span>
+                                 <span class="n">hospital_name</span><span class="o">=</span><span class="n">hospital_name</span><span class="p">,</span> <span class="n">bed_number</span><span class="o">=</span><span class="n">bed_number</span><span class="p">,</span> <span class="n">price_per_day</span><span class="o">=</span><span class="n">price_per_day</span><span class="p">,</span>
+                                 <span class="n">is_available</span><span class="o">=</span><span class="n">is_available</span><span class="p">,</span> <span class="n">previous_id</span><span class="o">=</span><span class="n">global_veriable2</span><span class="p">)</span>
+        <span class="n">ins</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Thank_You_For_Hospital_Bed.html&quot;</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">covid_19_help_service_application</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, ASH,KA,SA,AL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

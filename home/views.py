@@ -12,7 +12,7 @@ def index(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a home page
@@ -32,7 +32,7 @@ def register(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a  login page after successfull
@@ -78,7 +78,7 @@ def login(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a home page
@@ -112,7 +112,7 @@ def logout(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a home page
@@ -123,3 +123,4 @@ def logout(request):
     """
     auth.logout(request)
     return render(request, 'index.html')
+

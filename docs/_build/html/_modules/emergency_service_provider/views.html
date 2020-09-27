@@ -1,0 +1,539 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>emergency_service_provider.views &#8212; covid_19_help_service_application 1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for emergency_service_provider.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">AvailableAmbulance</span><span class="p">,</span> <span class="n">ReserveAmbulance</span><span class="p">,</span> <span class="n">AvailableOxygenCylinder</span><span class="p">,</span> <span class="n">ReserveOxygenCylinder</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Global Variables</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">a_num</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">c_num</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+<div class="viewcode-block" id="emergency_service_provider_home"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.emergency_service_provider_home">[docs]</a><span class="k">def</span> <span class="nf">emergency_service_provider_home</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to display home page for this emergency service provider function.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a home page for emergency service providers</span>
+<span class="sd">     which is a HTML page.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;emergency_service_provider_home.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="available_ambulance"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.available_ambulance">[docs]</a><span class="k">def</span> <span class="nf">available_ambulance</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     This method is used to display the available ambulance list.</span>
+
+
+<span class="sd">     :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">     :type request: HttpResponse.</span>
+
+
+<span class="sd">     :return: this method returns a html page that display all the entry</span>
+<span class="sd">     of the ambulance those are available.</span>
+
+
+<span class="sd">     :rtype: HttpResponse.</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+    <span class="n">available_ambulance_list</span> <span class="o">=</span> <span class="n">AvailableAmbulance</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_available</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;show_available_ambulance.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;available_ambulance_list&#39;</span><span class="p">:</span> <span class="n">available_ambulance_list</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="reserved_ambulance"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.reserved_ambulance">[docs]</a><span class="k">def</span> <span class="nf">reserved_ambulance</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used reserve ambulance when user is logged in, else it will</span>
+<span class="sd">    display the login page for user to log in. It shows a form where user</span>
+<span class="sd">    have to enter the ambulance number to reserve that particular ambulance and</span>
+<span class="sd">    also have fill up a form for patient details.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns login page when user</span>
+<span class="sd">    is not logged in, else it returns the patient information form.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">]</span>
+            <span class="k">global</span> <span class="n">a_num</span>
+            <span class="n">ambulance_to_be_reserved</span> <span class="o">=</span> <span class="n">AvailableAmbulance</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ambulance_number</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+            <span class="n">a_num</span> <span class="o">=</span> <span class="n">ambulance_to_be_reserved</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ambulance_number</span>
+            <span class="n">info</span> <span class="o">=</span> <span class="n">ambulance_to_be_reserved</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;ambulance_reserve_form.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="n">info</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">available_ambulance_list</span> <span class="o">=</span> <span class="n">AvailableAmbulance</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_available</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;show_available_ambulance.html&#39;</span><span class="p">,</span>
+                          <span class="p">{</span><span class="s1">&#39;available_ambulance_list&#39;</span><span class="p">:</span> <span class="n">available_ambulance_list</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="confirm_reservation"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.confirm_reservation">[docs]</a><span class="k">def</span> <span class="nf">confirm_reservation</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to handle the ambulance reservation, it takes data from the</span>
+<span class="sd">    patient information form and ambulance data and stores it in the database.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns a thank you page when data</span>
+<span class="sd">    is successfully stored in data base, else it will return the ambulance reservation</span>
+<span class="sd">    form.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">patientname</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;p_name&#39;</span><span class="p">]</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+        <span class="n">sex</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span>
+        <span class="n">blood_group</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;blood_group&#39;</span><span class="p">]</span>
+        <span class="n">nid</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;nid&#39;</span><span class="p">]</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
+        <span class="n">contact_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;contact_number&#39;</span><span class="p">]</span>
+        <span class="n">bkash_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;bkash_number&#39;</span><span class="p">]</span>
+        <span class="n">bkash_transaction_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;bkash_transaction_id&#39;</span><span class="p">]</span>
+        <span class="n">hospital_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;hospital_name&#39;</span><span class="p">]</span>
+        <span class="n">ambulance_type</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;ambulance_type&#39;</span><span class="p">]</span>
+        <span class="n">ambulance_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;ambulance_number&#39;</span><span class="p">]</span>
+        <span class="n">price</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">ReserveAmbulance</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">nid</span><span class="o">=</span><span class="n">nid</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Request Already Exists&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;ambulance_reserve_form.html&#39;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">change_database</span> <span class="o">=</span> <span class="n">AvailableAmbulance</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ambulance_number</span><span class="o">=</span><span class="n">a_num</span><span class="p">)</span>
+            <span class="n">change_database</span><span class="o">.</span><span class="n">is_available</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="n">change_database</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+            <span class="n">info</span> <span class="o">=</span> <span class="n">ReserveAmbulance</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">hospital_name</span><span class="o">=</span><span class="n">hospital_name</span><span class="p">,</span>
+                                    <span class="n">ambulance_type</span><span class="o">=</span><span class="n">ambulance_type</span><span class="p">,</span> <span class="n">ambulance_number</span><span class="o">=</span><span class="n">ambulance_number</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="n">price</span><span class="p">,</span>
+                                    <span class="n">patient_name</span><span class="o">=</span><span class="n">patientname</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="n">sex</span><span class="p">,</span> <span class="n">blood_type</span><span class="o">=</span><span class="n">blood_group</span><span class="p">,</span>
+                                    <span class="n">phone_number</span><span class="o">=</span><span class="n">contact_number</span><span class="p">,</span> <span class="n">nid</span><span class="o">=</span><span class="n">nid</span><span class="p">,</span>
+                                    <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="n">bkash_number</span><span class="o">=</span><span class="n">bkash_number</span><span class="p">,</span>
+                                    <span class="n">bkash_transaction_id</span><span class="o">=</span><span class="n">bkash_transaction_id</span><span class="p">)</span>
+
+            <span class="n">info</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;thank_you.html&#39;</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;ambulance_reserve_form.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="search_ambulance"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.search_ambulance">[docs]</a><span class="k">def</span> <span class="nf">search_ambulance</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This method is used to search ambulance by ambulance type, it search all</span>
+<span class="sd">      the records in the data base for a specific ambulance type and display the</span>
+<span class="sd">      results.</span>
+
+
+<span class="sd">      :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">      :type request: HttpResponse.</span>
+
+
+<span class="sd">      :return: this method returns a html page that display all the available entry</span>
+<span class="sd">      of that ambulance type in the data base that matches the users entry.</span>
+
+
+<span class="sd">      :rtype: HttpResponse.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;query2&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">AvailableAmbulance</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ambulance_type__icontains</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">is_available</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;search_ambulance.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;results&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">,</span> <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">query</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_request_form"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.delete_request_form">[docs]</a><span class="k">def</span> <span class="nf">delete_request_form</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This method is used to display the available ambulance list for a specific</span>
+<span class="sd">      user and it displays a form for that user where user can input a id from the list</span>
+<span class="sd">      to delete that particular request for ambulance.</span>
+
+
+<span class="sd">      :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">      :type request: HttpResponse.</span>
+
+
+<span class="sd">      :return: this method returns a html page. It returns login page when user</span>
+<span class="sd">       is not logged in, else it returns the page that display form to delete and</span>
+<span class="sd">       that users requests.</span>
+
+
+<span class="sd">      :rtype: HttpResponse.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span>
+        <span class="n">user_entry</span> <span class="o">=</span> <span class="n">ReserveAmbulance</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;delete_ambulance_reserve_form.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;user_entry&#39;</span><span class="p">:</span> <span class="n">user_entry</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_request"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.delete_request">[docs]</a><span class="k">def</span> <span class="nf">delete_request</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is used to handle the delete functionality for ambulance reservation</span>
+<span class="sd">        for a specific user. It finds that particular entry of that user and delete</span>
+<span class="sd">        that entry.</span>
+
+
+<span class="sd">        :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">        :type request: HttpResponse.</span>
+
+
+<span class="sd">        :return: this method returns the home page for emergency service provider.</span>
+
+
+<span class="sd">        :rtype: HttpResponse.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">ReserveAmbulance</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">entry</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">delete_entry</span> <span class="o">=</span> <span class="n">ReserveAmbulance</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">entry</span><span class="p">)</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">delete_entry</span><span class="o">.</span><span class="n">ambulance_number</span>
+        <span class="n">delete_entry</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="n">change_database</span> <span class="o">=</span> <span class="n">AvailableAmbulance</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ambulance_number</span><span class="o">=</span><span class="n">temp</span><span class="p">)</span>
+        <span class="n">change_database</span><span class="o">.</span><span class="n">is_available</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">change_database</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;emergency_service_provider_home.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Entry Does Not Exists&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;delete_ambulance_reserve_form.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="available_oxygen_cylinder"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.available_oxygen_cylinder">[docs]</a><span class="k">def</span> <span class="nf">available_oxygen_cylinder</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     This method is used to display the available oxygen cylinder list.</span>
+
+
+<span class="sd">     :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">     :type request: HttpResponse.</span>
+
+
+<span class="sd">     :return: this method returns a html page that display all the entry</span>
+<span class="sd">     of the oxygen cylinder those are available.</span>
+
+
+<span class="sd">     :rtype: HttpResponse.</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+    <span class="n">available_oxygen_cylinder_list</span> <span class="o">=</span> <span class="n">AvailableOxygenCylinder</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_available</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;show_available_oxygen_cylinder.html&#39;</span><span class="p">,</span>
+                  <span class="p">{</span><span class="s1">&#39;available_oxygen_cylinder_list&#39;</span><span class="p">:</span> <span class="n">available_oxygen_cylinder_list</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="reserved_oxygen_cylinder"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.reserved_oxygen_cylinder">[docs]</a><span class="k">def</span> <span class="nf">reserved_oxygen_cylinder</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used reserve oxygen cylinder when user is logged in, else it will</span>
+<span class="sd">    display the login page for user to log in. It shows a form where user</span>
+<span class="sd">    have to enter the oxygen cylinder number to reserve that particular oxygen cylinder and</span>
+<span class="sd">    also have fill up a form for patient details.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns login page when user</span>
+<span class="sd">    is not logged in, else it returns the patient information form.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">]</span>
+            <span class="k">global</span> <span class="n">c_num</span>
+            <span class="n">cylinder_to_be_reserved</span> <span class="o">=</span> <span class="n">AvailableOxygenCylinder</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">cylinder_number</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+            <span class="n">c_num</span> <span class="o">=</span> <span class="n">cylinder_to_be_reserved</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cylinder_number</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">c_num</span><span class="p">)</span>
+            <span class="n">info</span> <span class="o">=</span> <span class="n">cylinder_to_be_reserved</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;oxygen_cylinder_reserve_form.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="n">info</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">available_oxygen_cylinder_list</span> <span class="o">=</span> <span class="n">AvailableOxygenCylinder</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_available</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;show_available_oxygen_cylinder.html&#39;</span><span class="p">,</span>
+                          <span class="p">{</span><span class="s1">&#39;available_oxygen_cylinder_list&#39;</span><span class="p">:</span> <span class="n">available_oxygen_cylinder_list</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="confirm_oxygen_reservation"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.confirm_oxygen_reservation">[docs]</a><span class="k">def</span> <span class="nf">confirm_oxygen_reservation</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to handle the oxygen cylinder reservation, it takes data from the</span>
+<span class="sd">    patient information form and oxygen cylinder information and stores it in the database.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns a thank you page when data</span>
+<span class="sd">    is successfully stored in data base, else it will return the oxygen reservation form.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">patientname</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;p_name&#39;</span><span class="p">]</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+        <span class="n">sex</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span>
+        <span class="n">nid</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;nid&#39;</span><span class="p">]</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
+        <span class="n">contact_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;contact_number&#39;</span><span class="p">]</span>
+        <span class="n">bkash_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;bkash_number&#39;</span><span class="p">]</span>
+        <span class="n">bkash_transaction_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;bkash_transaction_id&#39;</span><span class="p">]</span>
+        <span class="n">company_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;company_name&#39;</span><span class="p">]</span>
+        <span class="n">cylinder_size</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;cylinder_size&#39;</span><span class="p">]</span>
+        <span class="n">cylinder_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;cylinder_number&#39;</span><span class="p">]</span>
+        <span class="n">price</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">ReserveOxygenCylinder</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">nid</span><span class="o">=</span><span class="n">nid</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Request Already Exists&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;oxygen_cylinder_reserve_form.html&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">change_database</span> <span class="o">=</span> <span class="n">AvailableOxygenCylinder</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cylinder_number</span><span class="o">=</span><span class="n">c_num</span><span class="p">)</span>
+            <span class="n">change_database</span><span class="o">.</span><span class="n">is_available</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="n">change_database</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+            <span class="n">info</span> <span class="o">=</span> <span class="n">ReserveOxygenCylinder</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">company_name</span><span class="o">=</span><span class="n">company_name</span><span class="p">,</span>
+                                         <span class="n">cylinder_size</span><span class="o">=</span><span class="n">cylinder_size</span><span class="p">,</span> <span class="n">cylinder_number</span><span class="o">=</span><span class="n">cylinder_number</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="n">price</span><span class="p">,</span>
+                                         <span class="n">patient_name</span><span class="o">=</span><span class="n">patientname</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="n">sex</span><span class="p">,</span> <span class="n">phone_number</span><span class="o">=</span><span class="n">contact_number</span><span class="p">,</span>
+                                         <span class="n">nid</span><span class="o">=</span><span class="n">nid</span><span class="p">,</span>
+                                         <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="n">bkash_number</span><span class="o">=</span><span class="n">bkash_number</span><span class="p">,</span>
+                                         <span class="n">bkash_transaction_id</span><span class="o">=</span><span class="n">bkash_transaction_id</span><span class="p">)</span>
+
+            <span class="n">info</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;thank_you.html&#39;</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;oxygen_cylinder_reserve_form.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="search_oxygen_cylinder"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.search_oxygen_cylinder">[docs]</a><span class="k">def</span> <span class="nf">search_oxygen_cylinder</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This method is used to search oxygen cylinder by cylinder size, it search all</span>
+<span class="sd">      the records in the data base for a specific cylinder size and display the</span>
+<span class="sd">      results.</span>
+
+
+<span class="sd">      :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">      :type request: HttpResponse.</span>
+
+
+<span class="sd">      :return: this method returns a html page that display all the available entry</span>
+<span class="sd">      of that cylinder size in the data base that matches the users entry.</span>
+
+
+<span class="sd">      :rtype: HttpResponse.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;query2&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">AvailableOxygenCylinder</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">cylinder_size__icontains</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">is_available</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;search_oxygen.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;results&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">,</span> <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">query</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_oxygen_request_form"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.delete_oxygen_request_form">[docs]</a><span class="k">def</span> <span class="nf">delete_oxygen_request_form</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This method is used to display the reserved oxygen cylinder list for a specific</span>
+<span class="sd">      user and it displays a form for that user where user can input a id from the list</span>
+<span class="sd">      to delete that particular request for oxygen cylinder.</span>
+
+
+<span class="sd">      :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">      :type request: HttpResponse.</span>
+
+
+<span class="sd">      :return: this method returns a html page. It returns login page when user</span>
+<span class="sd">       is not logged in, else it returns the page that display form to delete and</span>
+<span class="sd">       that users requests.</span>
+
+
+<span class="sd">      :rtype: HttpResponse.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span>
+        <span class="n">user_entry</span> <span class="o">=</span> <span class="n">ReserveOxygenCylinder</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;delete_oxygen_reserve_form.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;user_entry&#39;</span><span class="p">:</span> <span class="n">user_entry</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_oxygen_request"><a class="viewcode-back" href="../../emergency_service_provider.html#emergency_service_provider.views.delete_oxygen_request">[docs]</a><span class="k">def</span> <span class="nf">delete_oxygen_request</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is used to handle the delete functionality for oxygen cylinder reservation</span>
+<span class="sd">        for a specific user. It finds that particular entry of that user and delete</span>
+<span class="sd">        that entry.</span>
+
+
+<span class="sd">        :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">        :type request: HttpResponse.</span>
+
+
+<span class="sd">        :return: this method returns the home page for emergency service provider.</span>
+
+
+<span class="sd">        :rtype: HttpResponse.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">ReserveOxygenCylinder</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">entry</span><span class="p">):</span>
+        <span class="n">delete_entry</span> <span class="o">=</span> <span class="n">ReserveOxygenCylinder</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">entry</span><span class="p">)</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">delete_entry</span><span class="o">.</span><span class="n">cylinder_number</span>
+        <span class="n">delete_entry</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="n">change_database</span> <span class="o">=</span> <span class="n">AvailableOxygenCylinder</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cylinder_number</span><span class="o">=</span><span class="n">temp</span><span class="p">)</span>
+        <span class="n">change_database</span><span class="o">.</span><span class="n">is_available</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">change_database</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;emergency_service_provider_home.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Entry Does Not Exists&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;delete_oxygen_reserve_form.html&#39;</span><span class="p">)</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">covid_19_help_service_application</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, ASH,KA,SA,AL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

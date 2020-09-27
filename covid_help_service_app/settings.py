@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'plasma_service.apps.PlasmaserviceConfig',
     'home.apps.HomeConfig',
-    'emergency_service_provider.apps.EmergencyServiceProviderConfig'
+    'emergency_service_provider.apps.EmergencyServiceProviderConfig',
+    'covid_test.apps.CovidTestConfig',
+    'find_medicine.apps.FindMedicineConfig',
+    'reserve_icu_and_hospital_bed.apps.ReserveIcuAndHospitalBedConfig',
 ]
 
 MIDDLEWARE = [

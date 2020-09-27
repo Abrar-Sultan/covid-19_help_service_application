@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>plasma_service.views &#8212; covid_19_help_service_application 1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for plasma_service.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">PlasmaRequest</span><span class="p">,</span> <span class="n">PlasmaDonate</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+
+
+<div class="viewcode-block" id="plasma_home"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.plasma_home">[docs]</a><span class="k">def</span> <span class="nf">plasma_home</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to display home page for this plasma service function.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a home page for plasma service</span>
+<span class="sd">     which is a HTML page.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;plasma_home.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="request_plasma_form"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.request_plasma_form">[docs]</a><span class="k">def</span> <span class="nf">request_plasma_form</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to display plasma request form only when the</span>
+<span class="sd">    user is logged in, else it will display the login page for user to log in.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns login page when user</span>
+<span class="sd">    is not logged in, else it returns the plasma request form.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="c1"># messages.info(request, &#39;Please Login&#39;)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;request_plasma_form.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="request_plasma"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.request_plasma">[docs]</a><span class="k">def</span> <span class="nf">request_plasma</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to handle plasma request form, it takes data from the form</span>
+<span class="sd">    and stores it in the database that is for plasma request.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns a thank you page when data</span>
+<span class="sd">    is successfully stored in data base, else it will return the plasma request</span>
+<span class="sd">    form again.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">f_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;f_name&#39;</span><span class="p">]</span>
+        <span class="n">l_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;l_name&#39;</span><span class="p">]</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+        <span class="n">sex</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span>
+        <span class="n">blood_group</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;blood_group&#39;</span><span class="p">]</span>
+        <span class="n">nid</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;nid&#39;</span><span class="p">]</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
+        <span class="n">contact_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;contact_number&#39;</span><span class="p">]</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">PlasmaRequest</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">nid</span><span class="o">=</span><span class="n">nid</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Request Already Exists&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;request_plasma_form.html&#39;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">info</span> <span class="o">=</span> <span class="n">PlasmaRequest</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">first_name</span><span class="o">=</span><span class="n">f_name</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="n">l_name</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="n">sex</span><span class="p">,</span>
+                                 <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">nid</span><span class="o">=</span><span class="n">nid</span><span class="p">,</span>
+                                 <span class="n">blood_type</span><span class="o">=</span><span class="n">blood_group</span><span class="p">,</span>
+                                 <span class="n">phone_number</span><span class="o">=</span><span class="n">contact_number</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">)</span>
+
+            <span class="n">info</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;thank_you.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;request_plasma_form.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="show_plasma_request"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.show_plasma_request">[docs]</a><span class="k">def</span> <span class="nf">show_plasma_request</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     This method is used to display the available plasma request list.</span>
+
+
+<span class="sd">     :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">     :type request: HttpResponse.</span>
+
+
+<span class="sd">     :return: this method returns a html page that display all the available entry</span>
+<span class="sd">     of the plasma request in the data base.</span>
+
+
+<span class="sd">     :rtype: HttpResponse.</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+    <span class="n">request_list</span> <span class="o">=</span> <span class="n">PlasmaRequest</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;show_plasma_request_list.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;request_list&#39;</span><span class="p">:</span> <span class="n">request_list</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="search_request"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.search_request">[docs]</a><span class="k">def</span> <span class="nf">search_request</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This method is used to search plasma request by blood group, it search all</span>
+<span class="sd">      the records in the data base for a specific blood group and display the</span>
+<span class="sd">      results.</span>
+
+
+<span class="sd">      :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">      :type request: HttpResponse.</span>
+
+
+<span class="sd">      :return: this method returns a html page that display all the available entry</span>
+<span class="sd">      of the plasma request in the data base that matches the users entry.</span>
+
+
+<span class="sd">      :rtype: HttpResponse.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">PlasmaRequest</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">blood_type__icontains</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;search_plasma.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;results&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">,</span> <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">query</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_request_form"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.delete_request_form">[docs]</a><span class="k">def</span> <span class="nf">delete_request_form</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This method is used to display the available plasma request list for a specific</span>
+<span class="sd">      user and it displays a form for that user where user can input a id from the list</span>
+<span class="sd">      to delete that particular request for plasma.</span>
+
+
+<span class="sd">      :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">      :type request: HttpResponse.</span>
+
+
+<span class="sd">      :return: this method returns a html page. It returns login page when user</span>
+<span class="sd">       is not logged in, else it returns the page that display form to delete and</span>
+<span class="sd">       that users requests.</span>
+
+
+<span class="sd">      :rtype: HttpResponse.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span>
+        <span class="n">user_entry</span> <span class="o">=</span> <span class="n">PlasmaRequest</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;delete_request_form.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;user_entry&#39;</span><span class="p">:</span> <span class="n">user_entry</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_request"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.delete_request">[docs]</a><span class="k">def</span> <span class="nf">delete_request</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is used to handle the delete functionality for plasma request</span>
+<span class="sd">        for a specific user. It finds that particular entry of that user and delete</span>
+<span class="sd">        that entry.</span>
+
+
+<span class="sd">        :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">        :type request: HttpResponse.</span>
+
+
+<span class="sd">        :return: this method returns the home page for plasma service.</span>
+
+
+<span class="sd">        :rtype: HttpResponse.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">PlasmaRequest</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">entry</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">delete_entry</span> <span class="o">=</span> <span class="n">PlasmaRequest</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">entry</span><span class="p">)</span>
+        <span class="n">delete_entry</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;plasma_home.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Entry Does Not Exists&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;delete_request_form.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="donate_plasma_form"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.donate_plasma_form">[docs]</a><span class="k">def</span> <span class="nf">donate_plasma_form</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     This method is used to display plasma donate request form only when the</span>
+<span class="sd">     user is logged in, else it will display the login page for user to log in.</span>
+
+
+<span class="sd">     :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">     :type request: HttpResponse.</span>
+
+
+<span class="sd">     :return: this method returns a html page. It returns login page when user</span>
+<span class="sd">     is not logged in, else it returns the registration form for plasma donation.</span>
+
+
+<span class="sd">     :rtype: HttpResponse.</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="c1"># messages.info(request, &#39;Please Login&#39;)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;donate_plasma_form.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="donate_plasma"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.donate_plasma">[docs]</a><span class="k">def</span> <span class="nf">donate_plasma</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to handle plasma donation registration form, it takes data from the form</span>
+<span class="sd">    and stores it in the database that is for plasma donor.</span>
+
+
+<span class="sd">    :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">    :type request: HttpResponse.</span>
+
+
+<span class="sd">    :return: this method returns a html page. It returns a thank you page when data</span>
+<span class="sd">    is successfully stored in data base, else it will return the donor registration</span>
+<span class="sd">    form again.</span>
+
+
+<span class="sd">    :rtype: HttpResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">f_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;f_name&#39;</span><span class="p">]</span>
+        <span class="n">l_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;l_name&#39;</span><span class="p">]</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+        <span class="n">sex</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span>
+        <span class="n">blood_group</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;blood_group&#39;</span><span class="p">]</span>
+        <span class="n">nid</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;nid&#39;</span><span class="p">]</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
+        <span class="n">contact_number</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;contact_number&#39;</span><span class="p">]</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">PlasmaDonate</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">nid</span><span class="o">=</span><span class="n">nid</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Request Already Exists&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;donate_plasma_form.html&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">info</span> <span class="o">=</span> <span class="n">PlasmaDonate</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">first_name</span><span class="o">=</span><span class="n">f_name</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="n">l_name</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="n">sex</span><span class="p">,</span>
+                                <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">nid</span><span class="o">=</span><span class="n">nid</span><span class="p">,</span>
+                                <span class="n">blood_type</span><span class="o">=</span><span class="n">blood_group</span><span class="p">,</span>
+                                <span class="n">phone_number</span><span class="o">=</span><span class="n">contact_number</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">img</span><span class="p">)</span>
+
+            <span class="n">info</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;thank_you.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;donate_plasma_form.html&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="show_plasma_donate_request"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.show_plasma_donate_request">[docs]</a><span class="k">def</span> <span class="nf">show_plasma_donate_request</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     This method is used to display the available plasma donor list.</span>
+<span class="sd">     :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">     :type request: HttpResponse.</span>
+
+
+<span class="sd">     :return: this method returns a html page that display all the available entry</span>
+<span class="sd">     for the plasma donor.</span>
+
+
+<span class="sd">     :rtype: HttpResponse.</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+    <span class="n">request_list</span> <span class="o">=</span> <span class="n">PlasmaDonate</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;show_plasma_donate_request_list.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;request_list&#39;</span><span class="p">:</span> <span class="n">request_list</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="search_donate_request"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.search_donate_request">[docs]</a><span class="k">def</span> <span class="nf">search_donate_request</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This method is used to search plasma donors by blood group, it search all</span>
+<span class="sd">      the records in the data base for a specific blood group and display the</span>
+<span class="sd">      results.</span>
+
+
+<span class="sd">      :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">      :type request: HttpResponse.</span>
+
+
+<span class="sd">      :return: this method returns a html page that display all the available entry</span>
+<span class="sd">      of the plasma donors in the data base that matches the users entry.</span>
+
+
+<span class="sd">      :rtype: HttpResponse.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">PlasmaDonate</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">blood_type__icontains</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;search_plasma_donor.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;results&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">,</span> <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">query</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_donate_request_form"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.delete_donate_request_form">[docs]</a><span class="k">def</span> <span class="nf">delete_donate_request_form</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         This method is used to display the available plasma donor list for a specific</span>
+<span class="sd">         user and it displays a form for where user can input a id from the list</span>
+<span class="sd">         to delete that particular plasma donor.</span>
+
+
+<span class="sd">         :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">         :type request: HttpResponse.</span>
+
+
+<span class="sd">         :return: this method returns a html page. It returns login page when user</span>
+<span class="sd">          is not logged in, else it returns the page that display form to delete and</span>
+<span class="sd">          donor list for that specific user.</span>
+
+
+<span class="sd">         :rtype: HttpResponse.</span>
+<span class="sd">         &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span>
+        <span class="n">user_entry</span> <span class="o">=</span> <span class="n">PlasmaDonate</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;delete_donate_request_form.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;user_entry&#39;</span><span class="p">:</span> <span class="n">user_entry</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="delete_donate_request"><a class="viewcode-back" href="../../plasma_service.html#plasma_service.views.delete_donate_request">[docs]</a><span class="k">def</span> <span class="nf">delete_donate_request</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method is used to handle the delete functionality for plasma donor</span>
+<span class="sd">        for a specific user. It finds that particular entry of that user and delete</span>
+<span class="sd">        that entry.</span>
+
+
+<span class="sd">        :param request: it&#39;s a HttpResponse from user.</span>
+
+
+<span class="sd">        :type request: HttpResponse.</span>
+
+
+<span class="sd">        :return: this method returns the home page for plasma service.</span>
+
+
+<span class="sd">        :rtype: HttpResponse.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">PlasmaDonate</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">entry</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">delete_entry</span> <span class="o">=</span> <span class="n">PlasmaDonate</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">entry</span><span class="p">)</span>
+        <span class="n">delete_entry</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;plasma_home.html&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Entry Does Not Exists&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;delete_request_form.html&#39;</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">covid_19_help_service_application</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, ASH,KA,SA,AL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

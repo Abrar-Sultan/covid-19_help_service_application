@@ -1,0 +1,48 @@
+﻿{% extends 'index.html' %}
+
+
+{% block body  %}
+<body>
+    <div class="container">
+
+        <h2 class="text-center">See Reserved Hospital Bed </h2>
+    </div>
+    <table class="table table-striped">
+
+        <tr>
+            <th>ID</th>
+            <th>Hospital Name</th>
+            <th>Bed Number</th>
+            <th>Price Per Day</th>
+            <th>Available AC</th>
+            <th>Patient Name</th>
+            <th>Contact Number</th>
+        </tr>
+        {% for ver in see_reserved_hospital_bed_ver %}
+        {%  if request.user.username == ver.user_name %}
+        <tr>
+            <td>{{ver.id}}</td>
+            <td>{{ver.hospital_name}}</td>
+            <td>{{ver.bed_number}}</td>
+            <td>{{ver.price_per_day}}</td>
+            <td>{{ver.available_ac}}</td>
+            <td>{{ver.patient_name}}</td>
+            <td>{{ver.contact_number}}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+
+
+    </table>
+
+    <form class="form-inline" method="post" action="/Reserve_Page/Available_Hospital_Bed/See_Reserved_Hospital_Bed/Deleted_From_Hospital_Bed">
+            {% csrf_token %}
+            <input type="text" class="form-control" placeholder="Delete By ID" aria-label="Delete By ID" aria-describedby="basic-addon1" name="ID_Number" id="ID_Number">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Delete </button>
+        </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+{% endblock body %}

@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home package &#8212; covid_19_help_service_application 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="home-package">
+<h1>home package<a class="headerlink" href="#home-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="home.migrations.html">home.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="home.migrations.html#module-home.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-home.admin">
+<span id="home-admin-module"></span><h2>home.admin module<a class="headerlink" href="#module-home.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-home.apps">
+<span id="home-apps-module"></span><h2>home.apps module<a class="headerlink" href="#module-home.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="home.apps.HomeConfig">
+<em class="property">class </em><code class="sig-prename descclassname">home.apps.</code><code class="sig-name descname">HomeConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home/apps.html#HomeConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#home.apps.HomeConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt id="home.apps.HomeConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'home'</em><a class="headerlink" href="#home.apps.HomeConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-home.models">
+<span id="home-models-module"></span><h2>home.models module<a class="headerlink" href="#module-home.models" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-home.tests">
+<span id="home-tests-module"></span><h2>home.tests module<a class="headerlink" href="#module-home.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-home.urls">
+<span id="home-urls-module"></span><h2>home.urls module<a class="headerlink" href="#module-home.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-home.views">
+<span id="home-views-module"></span><h2>home.views module<a class="headerlink" href="#module-home.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="home.views.index">
+<code class="sig-prename descclassname">home.views.</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home/views.html#index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#home.views.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to display home page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a home page
+which is a HTML page.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="home.views.login">
+<code class="sig-prename descclassname">home.views.</code><code class="sig-name descname">login</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home/views.html#login"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#home.views.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to login a user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a home page
+which is a HTML page.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="home.views.logout">
+<code class="sig-prename descclassname">home.views.</code><code class="sig-name descname">logout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home/views.html#logout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#home.views.logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to logout user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a home page
+which is a HTML page.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="home.views.register">
+<code class="sig-prename descclassname">home.views.</code><code class="sig-name descname">register</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home/views.html#register"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#home.views.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to register nre users.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a  login page after successfull</p>
+</dd>
+</dl>
+<p>registration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-home">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-home" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">covid_19_help_service_application</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, ASH,KA,SA,AL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/home.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,62 @@
+﻿{% extends 'index.html' %}
+
+
+{% block body  %}
+  <body>
+    <div class= "container">
+        <h2 class="text-center">Request Test Online</h2>
+
+      <form class="needs-validation" action="/Test_Online/Thank_You" method="post" novalidate>
+        {% csrf_token %}
+        <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="F_Name">First name</label>
+      <input type="text" class="form-control" id="F_Name" name="F_Name" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="L_name">Last name</label>
+      <input type="text" class="form-control" id="L_name" name="L_name"  required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+  </div>
+            <div class="form-row">
+            <div class="col-md-6 mb-3">
+      <label for="NIDBC">NID / Birth Certificate</label>
+      <input type="text" class="form-control" id="NIDBC" name="NIDBC" required>
+      <div class="invalid-feedback">
+        Please provide NID / Birth Certificate.
+      </div>
+    </div>
+            <div class="col-md-3 mb-3">
+      <label for="Age">Age</label>
+      <input type="text" class="form-control" id="Age" name="Age" required>
+      <div class="invalid-feedback">
+        Please provide Age
+      </div>
+    </div>
+            <div class="col-md-4 mb-3">
+      <label for="Address">Address</label>
+      <input type="text" class="form-control" id="Address" name="Address" required>
+      <div class="invalid-feedback">
+        Please provide Address
+      </div>
+    </div>
+            <div class="col-md-3 mb-3">
+      <label for="Contact_Number">Contact Number</label>
+      <input type="phone" class="form-control" id="Contact_Number" name="Contact_Number" required>
+      <div class="invalid-feedback">
+        Please provide Contact Number
+      </div>
+    </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form>
+
+
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+{% endblock body %}

@@ -12,7 +12,7 @@ def plasma_home(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a home page for plasma service
@@ -34,7 +34,7 @@ def request_plasma_form(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a html page. It returns login page when user
@@ -59,7 +59,7 @@ def request_plasma(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a html page. It returns a thank you page when data
@@ -105,7 +105,7 @@ def show_plasma_request(request):
      :param request: it's a HttpResponse from user.
 
 
-     :type request HttpResponse.
+     :type request: HttpResponse.
 
 
      :return: this method returns a html page that display all the available entry
@@ -128,7 +128,7 @@ def search_request(request):
       :param request: it's a HttpResponse from user.
 
 
-      :type request HttpResponse.
+      :type request: HttpResponse.
 
 
       :return: this method returns a html page that display all the available entry
@@ -157,7 +157,7 @@ def delete_request_form(request):
       :param request: it's a HttpResponse from user.
 
 
-      :type request HttpResponse.
+      :type request: HttpResponse.
 
 
       :return: this method returns a html page. It returns login page when user
@@ -185,7 +185,7 @@ def delete_request(request):
         :param request: it's a HttpResponse from user.
 
 
-        :type request HttpResponse.
+        :type request: HttpResponse.
 
 
         :return: this method returns the home page for plasma service.
@@ -212,7 +212,7 @@ def donate_plasma_form(request):
      :param request: it's a HttpResponse from user.
 
 
-     :type request HttpResponse.
+     :type request: HttpResponse.
 
 
      :return: this method returns a html page. It returns login page when user
@@ -237,7 +237,7 @@ def donate_plasma(request):
     :param request: it's a HttpResponse from user.
 
 
-    :type request HttpResponse.
+    :type request: HttpResponse.
 
 
     :return: this method returns a html page. It returns a thank you page when data
@@ -281,7 +281,7 @@ def show_plasma_donate_request(request):
      :param request: it's a HttpResponse from user.
 
 
-     :type request HttpResponse.
+     :type request: HttpResponse.
 
 
      :return: this method returns a html page that display all the available entry
@@ -304,7 +304,7 @@ def search_donate_request(request):
       :param request: it's a HttpResponse from user.
 
 
-      :type request HttpResponse.
+      :type request: HttpResponse.
 
 
       :return: this method returns a html page that display all the available entry
@@ -333,7 +333,7 @@ def delete_donate_request_form(request):
          :param request: it's a HttpResponse from user.
 
 
-         :type request HttpResponse.
+         :type request: HttpResponse.
 
 
          :return: this method returns a html page. It returns login page when user
@@ -361,7 +361,7 @@ def delete_donate_request(request):
         :param request: it's a HttpResponse from user.
 
 
-        :type request HttpResponse.
+        :type request: HttpResponse.
 
 
         :return: this method returns the home page for plasma service.

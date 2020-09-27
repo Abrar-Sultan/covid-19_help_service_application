@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>covid_test package &#8212; covid_19_help_service_application 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="covid-test-package">
+<h1>covid_test package<a class="headerlink" href="#covid-test-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="covid_test.migrations.html">covid_test.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="covid_test.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="covid_test.migrations.html#module-covid_test.migrations.0001_initial">covid_test.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="covid_test.migrations.html#module-covid_test.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-covid_test.admin">
+<span id="covid-test-admin-module"></span><h2>covid_test.admin module<a class="headerlink" href="#module-covid_test.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-covid_test.apps">
+<span id="covid-test-apps-module"></span><h2>covid_test.apps module<a class="headerlink" href="#module-covid_test.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="covid_test.apps.CovidTestConfig">
+<em class="property">class </em><code class="sig-prename descclassname">covid_test.apps.</code><code class="sig-name descname">CovidTestConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/covid_test/apps.html#CovidTestConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#covid_test.apps.CovidTestConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt id="covid_test.apps.CovidTestConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'covid_test'</em><a class="headerlink" href="#covid_test.apps.CovidTestConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-covid_test.models">
+<span id="covid-test-models-module"></span><h2>covid_test.models module<a class="headerlink" href="#module-covid_test.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="covid_test.models.OnlineTest">
+<em class="property">class </em><code class="sig-prename descclassname">covid_test.models.</code><code class="sig-name descname">OnlineTest</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/covid_test/models.html#OnlineTest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#covid_test.models.OnlineTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This class is extended from the Model class so it has all the functionality
+of the model class.</p>
+<p>this class used to create objects for database entry</p>
+<dl class="py exception">
+<dt id="covid_test.models.OnlineTest.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#covid_test.models.OnlineTest.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="covid_test.models.OnlineTest.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#covid_test.models.OnlineTest.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="covid_test.models.OnlineTest.address">
+<code class="sig-name descname">address</code><a class="headerlink" href="#covid_test.models.OnlineTest.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="covid_test.models.OnlineTest.age">
+<code class="sig-name descname">age</code><a class="headerlink" href="#covid_test.models.OnlineTest.age" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="covid_test.models.OnlineTest.contact_number">
+<code class="sig-name descname">contact_number</code><a class="headerlink" href="#covid_test.models.OnlineTest.contact_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="covid_test.models.OnlineTest.first_name">
+<code class="sig-name descname">first_name</code><a class="headerlink" href="#covid_test.models.OnlineTest.first_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="covid_test.models.OnlineTest.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#covid_test.models.OnlineTest.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="covid_test.models.OnlineTest.last_name">
+<code class="sig-name descname">last_name</code><a class="headerlink" href="#covid_test.models.OnlineTest.last_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="covid_test.models.OnlineTest.nid_or_birth_certificate">
+<code class="sig-name descname">nid_or_birth_certificate</code><a class="headerlink" href="#covid_test.models.OnlineTest.nid_or_birth_certificate" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="covid_test.models.OnlineTest.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#covid_test.models.OnlineTest.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-covid_test.tests">
+<span id="covid-test-tests-module"></span><h2>covid_test.tests module<a class="headerlink" href="#module-covid_test.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-covid_test.urls">
+<span id="covid-test-urls-module"></span><h2>covid_test.urls module<a class="headerlink" href="#module-covid_test.urls" title="Permalink to this headline">¶</a></h2>
+<p>covid_help_service_app URL Configuration</p>
+<dl class="simple">
+<dt>The <cite>urlpatterns</cite> list routes URLs to views. For more information please see:</dt><dd><p><a class="reference external" href="https://docs.djangoproject.com/en/3.1/topics/http/urls/">https://docs.djangoproject.com/en/3.1/topics/http/urls/</a></p>
+</dd>
+</dl>
+<p>Examples:
+Function views</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Add an import:  from my_app import views</p></li>
+<li><p>Add a URL to urlpatterns:  path(‘’, views.home, name=’home’)</p></li>
+</ol>
+</div></blockquote>
+<dl class="simple">
+<dt>Class-based views</dt><dd><ol class="arabic simple">
+<li><p>Add an import:  from other_app.views import Home</p></li>
+<li><p>Add a URL to urlpatterns:  path(‘’, Home.as_view(), name=’home’)</p></li>
+</ol>
+</dd>
+<dt>Including another URLconf</dt><dd><ol class="arabic simple">
+<li><p>Import the include() function: from django.urls import include, path</p></li>
+<li><p>Add a URL to urlpatterns:  path(‘blog/’, include(‘blog.urls’))</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="module-covid_test.views">
+<span id="covid-test-views-module"></span><h2>covid_test.views module<a class="headerlink" href="#module-covid_test.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="covid_test.views.test_online">
+<code class="sig-prename descclassname">covid_test.views.</code><code class="sig-name descname">test_online</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/covid_test/views.html#test_online"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#covid_test.views.test_online" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to display home page of request for covid test service online.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a home page of request for covid test service online which is a HTML page if</p>
+</dd>
+</dl>
+<p>the user is logged in. else it will return the log in page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covid_test.views.thank_you">
+<code class="sig-prename descclassname">covid_test.views.</code><code class="sig-name descname">thank_you</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/covid_test/views.html#thank_you"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#covid_test.views.thank_you" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to handle request from of covid test, it takes data from the form
+and stores it in the database that is for online test request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns a thank you page when data</p>
+</dd>
+</dl>
+<p>is successfully stored in data base if the user is logged in. else it will return the log in page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-covid_test">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-covid_test" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">covid_19_help_service_application</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, ASH,KA,SA,AL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/covid_test.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

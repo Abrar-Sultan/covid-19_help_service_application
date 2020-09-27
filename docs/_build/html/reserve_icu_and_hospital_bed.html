@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reserve_icu_and_hospital_bed package &#8212; covid_19_help_service_application 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="reserve-icu-and-hospital-bed-package">
+<h1>reserve_icu_and_hospital_bed package<a class="headerlink" href="#reserve-icu-and-hospital-bed-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reserve_icu_and_hospital_bed.migrations.html">reserve_icu_and_hospital_bed.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reserve_icu_and_hospital_bed.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reserve_icu_and_hospital_bed.migrations.html#module-reserve_icu_and_hospital_bed.migrations.0001_initial">reserve_icu_and_hospital_bed.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reserve_icu_and_hospital_bed.migrations.html#module-reserve_icu_and_hospital_bed.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-reserve_icu_and_hospital_bed.admin">
+<span id="reserve-icu-and-hospital-bed-admin-module"></span><h2>reserve_icu_and_hospital_bed.admin module<a class="headerlink" href="#module-reserve_icu_and_hospital_bed.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-reserve_icu_and_hospital_bed.apps">
+<span id="reserve-icu-and-hospital-bed-apps-module"></span><h2>reserve_icu_and_hospital_bed.apps module<a class="headerlink" href="#module-reserve_icu_and_hospital_bed.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="reserve_icu_and_hospital_bed.apps.ReserveIcuAndHospitalBedConfig">
+<em class="property">class </em><code class="sig-prename descclassname">reserve_icu_and_hospital_bed.apps.</code><code class="sig-name descname">ReserveIcuAndHospitalBedConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/apps.html#ReserveIcuAndHospitalBedConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.apps.ReserveIcuAndHospitalBedConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.apps.ReserveIcuAndHospitalBedConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'reserve_icu_and_hospital_bed'</em><a class="headerlink" href="#reserve_icu_and_hospital_bed.apps.ReserveIcuAndHospitalBedConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-reserve_icu_and_hospital_bed.models">
+<span id="reserve-icu-and-hospital-bed-models-module"></span><h2>reserve_icu_and_hospital_bed.models module<a class="headerlink" href="#module-reserve_icu_and_hospital_bed.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableHospitalBed">
+<em class="property">class </em><code class="sig-prename descclassname">reserve_icu_and_hospital_bed.models.</code><code class="sig-name descname">AvailableHospitalBed</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/models.html#AvailableHospitalBed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableHospitalBed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This class is extended from the Model class so it has all the functionality
+of the model class.</p>
+<p>this class used to create objects for database entry</p>
+<dl class="py exception">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableHospitalBed.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableHospitalBed.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableHospitalBed.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableHospitalBed.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableHospitalBed.address">
+<code class="sig-name descname">address</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableHospitalBed.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableHospitalBed.available_ac">
+<code class="sig-name descname">available_ac</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableHospitalBed.available_ac" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableHospitalBed.bed_number">
+<code class="sig-name descname">bed_number</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableHospitalBed.bed_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableHospitalBed.hospital_name">
+<code class="sig-name descname">hospital_name</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableHospitalBed.hospital_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableHospitalBed.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableHospitalBed.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableHospitalBed.is_available">
+<code class="sig-name descname">is_available</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableHospitalBed.is_available" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableHospitalBed.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableHospitalBed.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableHospitalBed.price_per_day">
+<code class="sig-name descname">price_per_day</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableHospitalBed.price_per_day" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableICU">
+<em class="property">class </em><code class="sig-prename descclassname">reserve_icu_and_hospital_bed.models.</code><code class="sig-name descname">AvailableICU</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/models.html#AvailableICU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableICU" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This class is extended from the Model class so it has all the functionality
+of the model class.</p>
+<p>this class used to create objects for database entry</p>
+<dl class="py exception">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableICU.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableICU.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableICU.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableICU.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableICU.address">
+<code class="sig-name descname">address</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableICU.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableICU.hospital_name">
+<code class="sig-name descname">hospital_name</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableICU.hospital_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableICU.icu_type">
+<code class="sig-name descname">icu_type</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableICU.icu_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableICU.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableICU.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableICU.is_available">
+<code class="sig-name descname">is_available</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableICU.is_available" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableICU.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableICU.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.AvailableICU.price">
+<code class="sig-name descname">price</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.AvailableICU.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed">
+<em class="property">class </em><code class="sig-prename descclassname">reserve_icu_and_hospital_bed.models.</code><code class="sig-name descname">BookingHospitalBed</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/models.html#BookingHospitalBed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This class is extended from the Model class so it has all the functionality
+of the model class.</p>
+<p>this class used to create objects for database entry</p>
+<dl class="py exception">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.available_ac">
+<code class="sig-name descname">available_ac</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.available_ac" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.bed_number">
+<code class="sig-name descname">bed_number</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.bed_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.bkash_number">
+<code class="sig-name descname">bkash_number</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.bkash_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.bkash_transaction_id">
+<code class="sig-name descname">bkash_transaction_id</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.bkash_transaction_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.contact_number">
+<code class="sig-name descname">contact_number</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.contact_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.email">
+<code class="sig-name descname">email</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.email" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.hospital_name">
+<code class="sig-name descname">hospital_name</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.hospital_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.is_available">
+<code class="sig-name descname">is_available</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.is_available" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.patient_age">
+<code class="sig-name descname">patient_age</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.patient_age" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.patient_blood_group">
+<code class="sig-name descname">patient_blood_group</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.patient_blood_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.patient_name">
+<code class="sig-name descname">patient_name</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.patient_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.previous_id">
+<code class="sig-name descname">previous_id</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.previous_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.price_per_day">
+<code class="sig-name descname">price_per_day</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.price_per_day" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingHospitalBed.user_name">
+<code class="sig-name descname">user_name</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingHospitalBed.user_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU">
+<em class="property">class </em><code class="sig-prename descclassname">reserve_icu_and_hospital_bed.models.</code><code class="sig-name descname">BookingICU</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/models.html#BookingICU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This class is extended from the Model class so it has all the functionality
+of the model class.</p>
+<p>this class used to create objects for database entry</p>
+<dl class="py exception">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.bkash_number">
+<code class="sig-name descname">bkash_number</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.bkash_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.bkash_transaction_id">
+<code class="sig-name descname">bkash_transaction_id</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.bkash_transaction_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.contact_number">
+<code class="sig-name descname">contact_number</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.contact_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.email">
+<code class="sig-name descname">email</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.email" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.hospital_name">
+<code class="sig-name descname">hospital_name</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.hospital_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.icu_type">
+<code class="sig-name descname">icu_type</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.icu_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.is_available">
+<code class="sig-name descname">is_available</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.is_available" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.patient_age">
+<code class="sig-name descname">patient_age</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.patient_age" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.patient_blood_group">
+<code class="sig-name descname">patient_blood_group</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.patient_blood_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.patient_name">
+<code class="sig-name descname">patient_name</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.patient_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.previous_id">
+<code class="sig-name descname">previous_id</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.previous_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.price">
+<code class="sig-name descname">price</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="reserve_icu_and_hospital_bed.models.BookingICU.user_name">
+<code class="sig-name descname">user_name</code><a class="headerlink" href="#reserve_icu_and_hospital_bed.models.BookingICU.user_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-reserve_icu_and_hospital_bed.tests">
+<span id="reserve-icu-and-hospital-bed-tests-module"></span><h2>reserve_icu_and_hospital_bed.tests module<a class="headerlink" href="#module-reserve_icu_and_hospital_bed.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-reserve_icu_and_hospital_bed.urls">
+<span id="reserve-icu-and-hospital-bed-urls-module"></span><h2>reserve_icu_and_hospital_bed.urls module<a class="headerlink" href="#module-reserve_icu_and_hospital_bed.urls" title="Permalink to this headline">¶</a></h2>
+<p>covid_help_service_app URL Configuration</p>
+<dl class="simple">
+<dt>The <cite>urlpatterns</cite> list routes URLs to views. For more information please see:</dt><dd><p><a class="reference external" href="https://docs.djangoproject.com/en/3.1/topics/http/urls/">https://docs.djangoproject.com/en/3.1/topics/http/urls/</a></p>
+</dd>
+</dl>
+<p>Examples:
+Function views</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Add an import:  from my_app import views</p></li>
+<li><p>Add a URL to urlpatterns:  path(‘’, views.home, name=’home’)</p></li>
+</ol>
+</div></blockquote>
+<dl class="simple">
+<dt>Class-based views</dt><dd><ol class="arabic simple">
+<li><p>Add an import:  from other_app.views import Home</p></li>
+<li><p>Add a URL to urlpatterns:  path(‘’, Home.as_view(), name=’home’)</p></li>
+</ol>
+</dd>
+<dt>Including another URLconf</dt><dd><ol class="arabic simple">
+<li><p>Import the include() function: from django.urls import include, path</p></li>
+<li><p>Add a URL to urlpatterns:  path(‘blog/’, include(‘blog.urls’))</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="module-reserve_icu_and_hospital_bed.views">
+<span id="reserve-icu-and-hospital-bed-views-module"></span><h2>reserve_icu_and_hospital_bed.views module<a class="headerlink" href="#module-reserve_icu_and_hospital_bed.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="reserve_icu_and_hospital_bed.views.available_hospital_bed">
+<code class="sig-prename descclassname">reserve_icu_and_hospital_bed.views.</code><code class="sig-name descname">available_hospital_bed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/views.html#available_hospital_bed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.views.available_hospital_bed" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to display the available hospital bed list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page that display all the available entry</p>
+</dd>
+</dl>
+<p>of hospital bed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reserve_icu_and_hospital_bed.views.available_icu">
+<code class="sig-prename descclassname">reserve_icu_and_hospital_bed.views.</code><code class="sig-name descname">available_icu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/views.html#available_icu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.views.available_icu" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to display the available ICU list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page that display all the available entry</p>
+</dd>
+</dl>
+<p>of the ICU.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reserve_icu_and_hospital_bed.views.confirm_booking_for_hospital_bed">
+<code class="sig-prename descclassname">reserve_icu_and_hospital_bed.views.</code><code class="sig-name descname">confirm_booking_for_hospital_bed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/views.html#confirm_booking_for_hospital_bed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.views.confirm_booking_for_hospital_bed" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to handle the hospital bed reservation, it takes data from the
+patient information form and confirm payment.finally it stores the hospital bed
+information and payment confirmations in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns a form page of the patient details and payment confirmation page</p>
+</dd>
+</dl>
+<p>of hospital bed. if the input is wrong it will show a wrong id massage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reserve_icu_and_hospital_bed.views.confirm_booking_icu">
+<code class="sig-prename descclassname">reserve_icu_and_hospital_bed.views.</code><code class="sig-name descname">confirm_booking_icu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/views.html#confirm_booking_icu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.views.confirm_booking_icu" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to handle the ICU reservation, it takes data from the patient information
+form and confirm payment.finally it stores the ICU information and payment confirmations in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns a form page of the patient details and payment confirmation page</p>
+</dd>
+</dl>
+<p>of ICU. if the input is wrong it will show a wrong id massage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reserve_icu_and_hospital_bed.views.deleted_hospital_bed">
+<code class="sig-prename descclassname">reserve_icu_and_hospital_bed.views.</code><code class="sig-name descname">deleted_hospital_bed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/views.html#deleted_hospital_bed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.views.deleted_hospital_bed" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to delete the specific reserved hospital bed entry by ID and it changes the availability
+of that specific hospital bed entry in the available hospital bed database.finally it shows the confirmation of delete page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns the page of confirmation of delete if the user is logged in.</p>
+</dd>
+</dl>
+<p>else it will return the log in page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reserve_icu_and_hospital_bed.views.deleted_icu">
+<code class="sig-prename descclassname">reserve_icu_and_hospital_bed.views.</code><code class="sig-name descname">deleted_icu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/views.html#deleted_icu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.views.deleted_icu" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to delete the specific reserved ICU entry by ID and it changes the availability
+of that specific ICU entry in the available ICU database.finally it shows the confirmation of delete page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns the page of confirmation of delete if the user is logged in.</p>
+</dd>
+</dl>
+<p>else it will return the log in page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reserve_icu_and_hospital_bed.views.reserve_page">
+<code class="sig-prename descclassname">reserve_icu_and_hospital_bed.views.</code><code class="sig-name descname">reserve_page</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/views.html#reserve_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.views.reserve_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to show the selection page of see available ICU and see available hospital bed.
+by clicking one of the option it shows the corresponding page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page.It returns a page where it has two options.one is see available</p>
+</dd>
+</dl>
+<p>ICU and see available hospital base pages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reserve_icu_and_hospital_bed.views.see_reserve_icu">
+<code class="sig-prename descclassname">reserve_icu_and_hospital_bed.views.</code><code class="sig-name descname">see_reserve_icu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/views.html#see_reserve_icu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.views.see_reserve_icu" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to display the reserved ICU list of that specific user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page that display all the reserved ICU list if the user is</p>
+</dd>
+</dl>
+<p>logged in. else it will return the log in page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reserve_icu_and_hospital_bed.views.see_reserved_hospital_bed">
+<code class="sig-prename descclassname">reserve_icu_and_hospital_bed.views.</code><code class="sig-name descname">see_reserved_hospital_bed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/views.html#see_reserved_hospital_bed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.views.see_reserved_hospital_bed" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to display the reserved Hospital bed list of that specific user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page that display all the reserved ICU list if the user is logged in.</p>
+</dd>
+</dl>
+<p>else it will return the log in page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reserve_icu_and_hospital_bed.views.thank_you">
+<code class="sig-prename descclassname">reserve_icu_and_hospital_bed.views.</code><code class="sig-name descname">thank_you</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/views.html#thank_you"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.views.thank_you" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to handle the request of confirm reservation of ICU page, it takes data from the form and modify
+the availability of that specific entry of the available ICU database and stores it in the booking ICU database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns a thank you page when data</p>
+</dd>
+</dl>
+<p>is successfully stored in data base.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reserve_icu_and_hospital_bed.views.thank_you_for_hospital_bed">
+<code class="sig-prename descclassname">reserve_icu_and_hospital_bed.views.</code><code class="sig-name descname">thank_you_for_hospital_bed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/reserve_icu_and_hospital_bed/views.html#thank_you_for_hospital_bed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#reserve_icu_and_hospital_bed.views.thank_you_for_hospital_bed" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to handle the request of confirm reservation of hospital bed page, it takes data from the form and modify
+the availability of that specific entry of the available hospital bed database and stores it in the booking hospital bed database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – it’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>this method returns a html page. It returns a thank you page when data</p>
+</dd>
+</dl>
+<p>is successfully stored in data base.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-reserve_icu_and_hospital_bed">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-reserve_icu_and_hospital_bed" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">covid_19_help_service_application</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, ASH,KA,SA,AL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/reserve_icu_and_hospital_bed.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

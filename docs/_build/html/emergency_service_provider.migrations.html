@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>emergency_service_provider.migrations package &#8212; covid_19_help_service_application 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="emergency-service-provider-migrations-package">
+<h1>emergency_service_provider.migrations package<a class="headerlink" href="#emergency-service-provider-migrations-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-emergency_service_provider.migrations.0001_initial">
+<span id="emergency-service-provider-migrations-0001-initial-module"></span><h2>emergency_service_provider.migrations.0001_initial module<a class="headerlink" href="#module-emergency_service_provider.migrations.0001_initial" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="emergency_service_provider.migrations.0001_initial.Migration">
+<em class="property">class </em><code class="sig-prename descclassname">emergency_service_provider.migrations.0001_initial.</code><code class="sig-name descname">Migration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">app_label</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/emergency_service_provider/migrations/0001_initial.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#emergency_service_provider.migrations.0001_initial.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="py attribute">
+<dt id="emergency_service_provider.migrations.0001_initial.Migration.dependencies">
+<code class="sig-name descname">dependencies</code><em class="property"> = []</em><a class="headerlink" href="#emergency_service_provider.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.migrations.0001_initial.Migration.initial">
+<code class="sig-name descname">initial</code><em class="property"> = True</em><a class="headerlink" href="#emergency_service_provider.migrations.0001_initial.Migration.initial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="emergency_service_provider.migrations.0001_initial.Migration.operations">
+<code class="sig-name descname">operations</code><em class="property"> = [&lt;CreateModel  name='AvailableAmbulance', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('hospital_name', &lt;django.db.models.fields.CharField&gt;), ('ambulance_type', &lt;django.db.models.fields.CharField&gt;), ('ambulance_number', &lt;django.db.models.fields.CharField&gt;), ('price', &lt;django.db.models.fields.CharField&gt;), ('phone_number', &lt;django.db.models.fields.CharField&gt;), ('email', &lt;django.db.models.fields.CharField&gt;), ('is_available', &lt;django.db.models.fields.BooleanField&gt;)]&gt;, &lt;CreateModel  name='AvailableOxygenCylinder', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('company_name', &lt;django.db.models.fields.CharField&gt;), ('cylinder_size', &lt;django.db.models.fields.CharField&gt;), ('cylinder_number', &lt;django.db.models.fields.CharField&gt;), ('price', &lt;django.db.models.fields.CharField&gt;), ('phone_number', &lt;django.db.models.fields.CharField&gt;), ('email', &lt;django.db.models.fields.CharField&gt;), ('is_available', &lt;django.db.models.fields.BooleanField&gt;)]&gt;, &lt;CreateModel  name='ReserveAmbulance', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('username', &lt;django.db.models.fields.CharField&gt;), ('hospital_name', &lt;django.db.models.fields.CharField&gt;), ('ambulance_type', &lt;django.db.models.fields.CharField&gt;), ('ambulance_number', &lt;django.db.models.fields.CharField&gt;), ('price', &lt;django.db.models.fields.CharField&gt;), ('patient_name', &lt;django.db.models.fields.CharField&gt;), ('age', &lt;django.db.models.fields.CharField&gt;), ('sex', &lt;django.db.models.fields.CharField&gt;), ('blood_type', &lt;django.db.models.fields.CharField&gt;), ('phone_number', &lt;django.db.models.fields.CharField&gt;), ('nid', &lt;django.db.models.fields.CharField&gt;), ('location', &lt;django.db.models.fields.CharField&gt;), ('bkash_number', &lt;django.db.models.fields.CharField&gt;), ('bkash_transaction_id', &lt;django.db.models.fields.CharField&gt;)]&gt;, &lt;CreateModel  name='ReserveOxygenCylinder', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('username', &lt;django.db.models.fields.CharField&gt;), ('company_name', &lt;django.db.models.fields.CharField&gt;), ('cylinder_size', &lt;django.db.models.fields.CharField&gt;), ('cylinder_number', &lt;django.db.models.fields.CharField&gt;), ('price', &lt;django.db.models.fields.CharField&gt;), ('patient_name', &lt;django.db.models.fields.CharField&gt;), ('age', &lt;django.db.models.fields.CharField&gt;), ('sex', &lt;django.db.models.fields.CharField&gt;), ('blood_type', &lt;django.db.models.fields.CharField&gt;), ('phone_number', &lt;django.db.models.fields.CharField&gt;), ('nid', &lt;django.db.models.fields.CharField&gt;), ('location', &lt;django.db.models.fields.CharField&gt;), ('bkash_number', &lt;django.db.models.fields.CharField&gt;), ('bkash_transaction_id', &lt;django.db.models.fields.CharField&gt;)]&gt;]</em><a class="headerlink" href="#emergency_service_provider.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-emergency_service_provider.migrations">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-emergency_service_provider.migrations" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">covid_19_help_service_application</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, ASH,KA,SA,AL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/emergency_service_provider.migrations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

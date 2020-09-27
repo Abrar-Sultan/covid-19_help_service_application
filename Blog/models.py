@@ -1,5 +1,9 @@
 from django.db import models
 
+"""
+Blog model with the field: name, age, nid, blood_group
+"""
+
 
 class Blog(models.Model):
     phone = models.CharField(max_length=15)

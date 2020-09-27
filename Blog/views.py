@@ -7,9 +7,5 @@ from . models import Blog
 
 
 def blog(request):
-    """
-    :param request: request
-    :return: all the blog items in blogs as dictionary object to be rendered
-    """
     blogs = Blog.objects.all()
     return render(request, 'index.html', {'blogs': blogs})

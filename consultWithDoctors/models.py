@@ -1,5 +1,9 @@
 from django.db import models
 
+"""
+consultWithDoctor model with the field: name, age, nid, blood_group
+"""
+
 
 class ConsultWithDoctor(models.Model):
     name = models.CharField(max_length=50)
